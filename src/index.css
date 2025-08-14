@@ -1,0 +1,178 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Sora:wght@100..800&family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 84.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    /* Brand Colors */
+    --brand-orange: 15 100% 64%;
+    --brand-blue: 203 68% 42%;
+    --brand-light-green: 73 24% 75%;
+    --brand-gray: 0 0% 84%;
+    --brand-light-gray: 0 0% 96%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .font-primary {
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .font-secondary {
+    font-family: 'Sora', sans-serif;
+  }
+
+  .font-tertiary {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .text-brand-orange {
+    color: hsl(var(--brand-orange));
+  }
+
+  .text-brand-blue {
+    color: hsl(var(--brand-blue));
+  }
+
+  .bg-brand-orange {
+    background-color: hsl(var(--brand-orange));
+  }
+
+  .bg-brand-blue {
+    background-color: hsl(var(--brand-blue));
+  }
+
+  .bg-brand-light-green {
+    background-color: hsl(var(--brand-light-green));
+  }
+
+  .bg-brand-gray {
+    background-color: hsl(var(--brand-gray));
+  }
+
+  .bg-brand-light-gray {
+    background-color: hsl(var(--brand-light-gray));
+  }
+
+  .border-brand-orange {
+    border-color: hsl(var(--brand-orange));
+  }
+
+  .border-brand-blue {
+    border-color: hsl(var(--brand-blue));
+  }
+
+  /* Mobile-first responsive utilities */
+  .mobile-container {
+    @apply max-w-sm mx-auto px-4;
+  }
+
+  /* Smooth animations */
+  .smooth-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Flip card animation */
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
