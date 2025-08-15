@@ -250,16 +250,11 @@ const USATComputerScience = () => {
                 <div className="flex items-start space-x-2">
                   <div className="w-2 h-2 bg-brand-orange rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-sm text-muted-foreground">
-                   YouTube videos are helpful for understanding and reinforcing core concepts clearly and effectively.
-                  </p>
+  You can use YouTube channels such as Feel Free to Learn, Imran Sir Maths, Dear Sir, Fresher World, Aspirants of Future, and Career Ride to strengthen your concepts and practice solving past paper questions.
+</p>
                 </div>
 
-                 <div className="flex items-start space-x-2">
-                  <div className="w-2 h-2 bg-brand-orange rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-sm text-muted-foreground">
-                   You can use premium resources like Tabir Academy or Dogar’s books if you prefer, but they’re not required and often not significantly more helpful than past papers.
-                  </p>
-                </div>
+                
 
                  <div className="flex items-start space-x-2">
                   <div className="w-2 h-2 bg-brand-orange rounded-full mt-2 flex-shrink-0"></div>
