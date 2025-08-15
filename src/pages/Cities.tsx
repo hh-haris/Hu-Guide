@@ -8,85 +8,85 @@ const Cities = () => {
   const cities = [{
     name: 'Budapest',
     slug: 'budapest',
-    description: 'Capital city with multiple world-class universities and vibrant student life.',
+    description: 'Hungary’s capital and largest city, offering top universities, vibrant culture, and the most job opportunities.',
     image: 'B1.jpg',
     universities: ['Budapest Metropolitan University', 'Budapest University of Economics and Business', 'Budapest University of Technology and Economics', 'Corvinus University of Budapest', 'Dennis Gabor University of Applied Sciences', 'Eötvös Loránd University', 'Ludovika University of Public Service', 'Obuda University', 'Semmelweis University']
   }, {
     name: 'Debrecen',
     slug: 'debrecen',
-    description: 'Second largest city known for its excellent medical and agricultural programs.',
+    description: 'The country’s second largest city, known for its strong academic scene and lower living costs compared to Budapest.',
     image: '/D1.jpg',
     universities: ['University of Debrecen']
   }, {
     name: 'Pécs',
     slug: 'pecs',
-    description: 'Historic university town with strong humanities and medical programs.',
+    description: 'A historic university city in southern Hungary, famous for its cultural life and Mediterranean feel.',
     image: 'P1.jpg',
     universities: ['University of Pécs']
   }, {
     name: 'Győr',
     slug: 'gyor',
-    description: 'Industrial city with excellent engineering and technology programs.',
+    description: 'An industrial and cultural hub in western Hungary.',
     image: '/G1.jpeg',
     universities: ['Széchenyi István University']
   }, {
     name: 'Baja',
     slug: 'baja',
-    description: 'Small city with focused educational programs and close-knit community.',
+    description: 'A charming riverside town known for its friendly atmosphere.',
     image: '/B5.jpg',
     universities: ['Eötvös József College']
   }, {
     name: 'Dunaújváros',
     slug: 'dunaujvaros',
-    description: 'Modern city with specialized university programs and industrial focus.',
+    description: 'A modern city with a strong technical and industrial focus.',
     image: '/D5.jpg',
     universities: ['University of Dunaújváros']
   }, {
     name: 'Eger',
     slug: 'eger',
-    description: 'Beautiful historic city with strong Catholic university traditions.',
+    description: 'A historic city famous for its baroque architecture and vibrant student life.',
     image: '/E1.jpg',
     universities: ['Eszterházy Károly Catholic University']
   }, {
     name: 'Gödöllő',
     slug: 'godollo',
-    description: 'Agricultural hub with leading life sciences and veterinary programs.',
+    description: 'Known for its green spaces and royal heritage.',
     image: '/G5.jpg',
     universities: ['Hungarian University of Agriculture and Life Sciences, MATE']
   }, {
     name: 'Kecskemét',
     slug: 'kecskemet',
-    description: 'Technology-focused city with strong computer science programs.',
+    description: 'A growing economic center with strengths in agriculture and the arts.',
     image: '/K1.jpg',
     universities: ['John von Neumann University']
   }, {
     name: 'Miskolc',
     slug: 'miskolc',
-    description: 'Industrial city with excellent engineering and technical programs.',
+    description: 'The largest city in northeastern Hungary, surrounded by natural beauty.',
     image: '/M1.jpg',
     universities: ['University of Miskolc']
   }, {
     name: 'Nyíregyháza',
     slug: 'nyiregyhaza',
-    description: 'Regional center with diverse academic programs and student opportunities.',
+    description: 'A welcoming eastern city with a relaxed pace of life.',
     image: '/N1.jpg',
     universities: ['University of Nyíregyháza']
   }, {
     name: 'Sopron',
     slug: 'sopron',
-    description: 'Border city with specialized forestry and environmental programs.',
+    description: 'A scenic city near the Austrian border, known for wine and cross-border culture.',
     image: '/S5.jpg',
     universities: ['University of Sopron']
   }, {
     name: 'Szeged',
     slug: 'szeged',
-    description: 'Sunny city with prestigious university and strong research programs.',
+    description: 'A sunny southern city with a vibrant cultural and academic scene.',
     image: '/S1.jpg',
     universities: ['University of Szeged']
   }, {
     name: 'Veszprém',
     slug: 'veszprem',
-    description: 'Chemical industry hub with excellent engineering and science programs.',
+    description: 'A historic city near Lake Balaton with a lively cultural life.',
     image: '/V1.jpg',
     universities: ['University of Pannonia']
   }];
