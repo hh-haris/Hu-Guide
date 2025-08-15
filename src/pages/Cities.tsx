@@ -74,7 +74,7 @@ const Cities = () => {
   }, {
     name: 'Sopron',
     slug: 'sopron',
-    description: 'A scenic city near the Austrian border, known for wine and cross-border culture.',
+    description: 'A scenic city near the Austrian border, known for wine and cross border culture.',
     image: '/S5.jpg',
     universities: ['University of Sopron']
   }, {
