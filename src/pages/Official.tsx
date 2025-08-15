@@ -25,7 +25,7 @@ const Official = () => {
     },
     {
       name: 'Abdullah Saleem',
-      bio: 'Abdullah Saleem is the co-creator of this website with me. He is one of the nicest people you’ll meet and among the most knowledgeable about USAT and the entire journey from USAT to nomination. Much of the information you see on this website has been compiled and gathered by Abdullah, showing his dedication and future commitment to helping applicants. The structure of the website and everything you see here is the result of our discussions and shared understanding of what to include and what to leave out. If you have any questions about USAT, tag Abdullah in the group and ask him.',
+      bio: 'Abdullah Saleem is the co-creator of this website with me. He is one of the nicest people you’ll meet and among the most knowledgeable about USAT and the entire journey from USAT to nomination. Much of the information you see on this website has been compiled and gathered by Abdullah, showing his dedication and future commitment to helping applicants. The structure of the website and everything you see here is the result of our discussions and shared understanding of what to include and what to leave out. If you have any queries, tag Abdullah in the group and ask him.',
     }
   ];
 
