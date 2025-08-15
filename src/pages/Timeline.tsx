@@ -41,7 +41,21 @@ const TimelinePage = () => {
     id: 1,
     date: "January - November",
     title: "USAT",
-    description: "The Undergraduate Studies Admission/Aptitude Test is the first and most crucial step in the SHS journey. It is conducted four times a year and based on USAT scores, HEC nominates candidates for SHS. For a detailed guide, visit the USAT page."
+    description: <>
+  The Undergraduate Studies Admission/Aptitude Test (USAT) is the first and most crucial step in your SHS journey. 
+  You can apply for USAT through the{" "}
+  <a
+    href="https://etc.hec.gov.pk/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-brand-orange font-medium hover:underline"
+  >
+    ETC HEC Portal
+  </a>
+  . The test is conducted four times a year, and based on your USAT scores, HEC nominates candidates for SHS. 
+  For a detailed guide, visit the USAT page.
+</>
+
   }, {
     id: 2,
     date: "November - January",
