@@ -17,8 +17,8 @@ const USATEngineering = () => {
   const preparationTips = [
     "Your USAT preparation depends entirely on your own effort and ability.",
     "Focused practice on past papers and similar questions is the key to success and often all you need to score well.",
-    "YouTube videos are helpful for understanding and reinforcing core concepts clearly and effectively.",
-    "You can use premium resources like Tabir Academy or Dogar’s books if you prefer, but they’re not required and often not significantly more helpful than past papers.",
+    "You can use YouTube channels such as Feel Free to Learn, Imran Sir Maths, Dear Sir, Fresher World, Aspirants of Future, and Career Ride to strengthen your concepts and practice solving past paper questions.",
+
     "Focus on time management read questions carefully and think smartly as some answers are obvious and need only logic not formulas."
   ];
 
