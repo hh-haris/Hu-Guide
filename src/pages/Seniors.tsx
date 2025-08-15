@@ -29,31 +29,11 @@ const Seniors = () => {
       batch: '2025-26',
       university: 'University of Debrecen',
       city: 'Debrecen',
-      usatMarks: 'N/A',
+      usatMarks: '75',
       fscMarks: 'N/A',
       bio: 'Haseeb is the admin of the SHS USAT Preparation Group and an SHS awardee at the University of Debrecen. For any questions, simply tag him in the group and ask.',
     },
-    {
-      name: 'Huzaifa',
-      subject: 'Computer Science',
-      batch: '2023-24',
-      university: 'University of Debrecen',
-      city: 'Debrecen',
-      usatMarks: 'N/A',
-      fscMarks: 'N/A',
-      bio: 'N/A',
-    },
-    
-    {
-      name: 'Abdul Hanan',
-      subject: 'Medicine',
-      batch: '2025-26',
-      university: 'Semmelweis University',
-      city: 'Budapest',
-      usatMarks: 'N/A',
-      fscMarks: '94%',
-      bio: 'N/A',
-    },
+
     {
       name: 'Abdul Wahab',
       subject: 'Computer Science',
