@@ -81,13 +81,13 @@ const Cities = () => {
     name: 'Szeged',
     slug: 'szeged',
     description: 'Sunny city with prestigious university and strong research programs.',
-    image: 'https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?w=800&h=600&fit=crop',
+    image: '/S1.jpg',
     universities: ['University of Szeged']
   }, {
     name: 'Veszprém',
     slug: 'veszprem',
     description: 'Chemical industry hub with excellent engineering and science programs.',
-    image: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?w=800&h=600&fit=crop',
+    image: '/V1.jpg',
     universities: ['University of Pannonia']
   }];
 
