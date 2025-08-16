@@ -1,1 +1,1 @@
-This website is created to guide students applying for the Stipendium Hungaricum Scholarship (SHS), especially those starting from USAT and progressing to the nomination stage. It compiles official and trusted information in one place, making the process clearer and easier to follow.
+This website is created to guide students applying for the Stipendium Hungaricum Scholarship (SHS). It compiles official and trusted information in one place, making the process clearer and easier to follow.
