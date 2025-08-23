@@ -34,14 +34,13 @@ const Header = () => {
     { name: 'Documents', path: '/documents' },
     { name: 'Cities', path: '/cities' },
     { name: 'Seniors', path: '/seniors' },
-    { name: 'Pro', path: '/pro' },
     { name: 'Official', path: '/official' }
   ];
 
   return (
     <>
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-gray"
+        className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-brand-gray"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -60,6 +59,13 @@ const Header = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-2">
+              {/* Pro link */}
+              <Link
+                to="/pro"
+                className="px-3 py-1 rounded-full bg-brand-orange text-white text-sm font-medium hover:opacity-90 smooth-transition"
+              >
+                Pro
+              </Link>
               {/* Theme Toggle */}
               <ThemeToggle />
               
@@ -117,7 +123,6 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl overflow-y-auto"
               className="fixed right-0 top-0 h-full w-80 bg-background border-l shadow-xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
