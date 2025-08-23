@@ -1,55 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, BadgeCheck, ChevronRight } from 'lucide-react';
-import NumberFlow from '@number-flow/react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { cn } from '@/lib/utils';
+import { PricingCard } from '@/components/blocks/PricingCard';
 
 const Pro = () => {
   const [frequency, setFrequency] = useState<string>('onetime');
-
-  const plans = [
-    {
-      id: 'standard',
-      name: 'Standard',
-      price: {
-        onetime: 'Free forever',
-      },
-      description: 'Essential guidance for your SHS journey.',
-      features: [
-        'Access to USAT Guide',
-        'General University Finder Guide',
-        'Documents Guide',
-        'Cities (Job Situation and Seniors reviews excluded)',
-        'Seniors',
-      ],
-      cta: 'Current Plan',
-      current: true,
-    },
-    {
-      id: 'pro',
-      name: 'Pro',
-      price: {
-        onetime: 299,
-      },
-      description: 'Access everything you need to confidently apply for SHS.',
-      features: [
-        'All Free features',
-        'Advanced University Insights',
-        'Detailed City Job Market Analysis',
-        'Senior Reviews & Experiences',
-        'Priority Support',
-        'Upcoming Premium Features',
-      ],
-      cta: 'Upgrade to Pro',
-      popular: true,
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -112,88 +70,40 @@ const Pro = () => {
               transition={{ delay: 0.4 }}
               className="grid gap-6 max-w-4xl mx-auto md:grid-cols-2"
             >
-              {plans.map((plan, index) => (
-                <motion.div
-                  key={plan.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                >
-                  <Card
-                    className={cn(
-                      'relative w-full text-left h-full',
-                      plan.popular && 'ring-2 ring-brand-orange shadow-lg',
-                      plan.current && 'ring-2 ring-brand-blue'
-                    )}
-                  >
-                    {plan.popular && (
-                      <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-orange hover:bg-brand-orange/90">
-                        Most Popular
-                      </Badge>
-                    )}
-                    {plan.current && (
-                      <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-blue hover:bg-brand-blue/90">
-                        Current Plan
-                      </Badge>
-                    )}
-                    
-                    <CardHeader className="pb-4">
-                      <CardTitle className="font-secondary text-2xl font-bold">
-                        {plan.name}
-                      </CardTitle>
-                      <CardDescription className="space-y-2">
-                        <p className="text-muted-foreground">{plan.description}</p>
-                        <div className="text-3xl font-bold text-foreground">
-                          {typeof plan.price[frequency as keyof typeof plan.price] === 'number' ? (
-                            <div className="flex items-baseline gap-1">
-                              <span className="text-sm text-muted-foreground">PKR</span>
-                              <NumberFlow
-                                value={plan.price[frequency as keyof typeof plan.price] as number}
-                                format={{ maximumFractionDigits: 0 }}
-                                className="font-secondary"
-                              />
-                              <span className="ml-1 text-sm text-muted-foreground">one-time</span>
-                            </div>
-                          ) : (
-                            <span className="text-xl">
-                              {plan.price[frequency as keyof typeof plan.price]}
-                            </span>
-                          )}
-                        </div>
-                      </CardDescription>
-                    </CardHeader>
-                    
-                    <CardContent className="space-y-4">
-                      {plan.features.map((feature, featureIndex) => (
-                        <div
-                          key={featureIndex}
-                          className="flex items-start gap-3 text-sm"
-                        >
-                          <BadgeCheck className="h-4 w-4 text-brand-orange mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground leading-relaxed">{feature}</span>
-                        </div>
-                      ))}
-                    </CardContent>
-                    
-                    <CardFooter className="pt-6">
-                      <Button
-                        className={cn(
-                          "w-full font-medium",
-                          plan.popular 
-                            ? 'bg-brand-orange hover:bg-brand-orange/90 text-white' 
-                            : plan.current
-                            ? 'bg-brand-blue hover:bg-brand-blue/90 text-white'
-                            : 'bg-secondary hover:bg-secondary/80'
-                        )}
-                        disabled={plan.current}
-                      >
-                        {plan.cta}
-                        {!plan.current && <ArrowRight className="ml-2 h-4 w-4" />}
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              ))}
+              <PricingCard
+                title="Standard"
+                description="Essential guidance for your SHS journey."
+                price={0}
+                features={[
+                  {
+                    title: 'Includes',
+                    items: [
+                      'Access to USAT Guide',
+                      'General University Finder Guide',
+                      'Documents Guide',
+                      'Cities (Job Situation and Seniors reviews excluded)',
+                      'Seniors',
+                    ],
+                  },
+                ]}
+                buttonText="Current Plan"
+                onButtonClick={() => {}}
+              />
+
+              <PricingCard
+                title="Pro"
+                description="Access everything you need to confidently apply for SHS."
+                price={299}
+                features={[
+                  {
+                    title: 'Features',
+                    items: ['Coming soon'],
+                  },
+                ]}
+                buttonText="Upgrade to Pro"
+                onButtonClick={() => {}}
+                highlight
+              />
             </motion.div>
 
             {/* Coming Soon Notice */}
