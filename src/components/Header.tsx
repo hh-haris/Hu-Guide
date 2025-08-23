@@ -34,7 +34,6 @@ const Header = () => {
     { name: 'Documents', path: '/documents' },
     { name: 'Cities', path: '/cities' },
     { name: 'Seniors', path: '/seniors' },
-    { name: 'Pro', path: '/pro' },
     { name: 'Official', path: '/official' }
   ];
 

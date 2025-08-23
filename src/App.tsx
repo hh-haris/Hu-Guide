@@ -25,9 +25,6 @@ import Universities from "./pages/Universities";
 import UniversitySearch from "./pages/UniversitySearch";
 import Seniors from "./pages/Seniors";
 import Official from "./pages/Official";
-import Pro from "./pages/Pro";
-import HuBot from "./pages/HuBot";
-import HuBotFloat from "./components/HuBotFloat";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +35,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <HuBotFloat />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/overview" element={<Overview />} />
@@ -58,8 +54,6 @@ const App = () => (
             <Route path="/cities" element={<Cities />} />
             <Route path="/cities/:citySlug" element={<CityDetail />} />
             <Route path="/seniors" element={<Seniors />} />
-            <Route path="/pro" element={<Pro />} />
-            <Route path="/hubot" element={<HuBot />} />
             <Route path="/official" element={<Official />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
