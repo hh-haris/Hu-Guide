@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { ThemeToggle } from './ThemeToggle';
+import { ThemeSwitch } from './ThemeSwitch';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,8 +66,8 @@ const Header = () => {
               >
                 Pro
               </Link>
-              {/* Theme Toggle */}
-              <ThemeToggle />
+              {/* Theme Switch */}
+              <ThemeSwitch />
               
               {/* Hamburger Menu */}
               <motion.button

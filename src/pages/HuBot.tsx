@@ -19,10 +19,11 @@ const HuBot = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: '1',
-      content: "Hello! I'm huBot, your personalized assistant for the SHS Scholarship. I'm currently under development. Whenever I'm available, you'll be informed via the WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
+      content:
+        "Salam! 🌟\nI am huBot, your smart assistant, here to guide and support you throughout the SHS process. I’m still under development, but as soon as I’m ready, my creators Haris Habib and Abdullah Saleem will update you in the group.\n\nWishing you the very best on your journey toward SHS success 🚀",
       role: 'assistant',
       timestamp: new Date(),
-    }
+    },
   ]);
   
   const [inputValue, setInputValue] = useState('');
@@ -49,7 +50,8 @@ const HuBot = () => {
     setTimeout(() => {
       const assistantMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
-        content: "I am huBot, your personalized assistance to SHS Scholarship. I am under development. Whenever I am available, you will be informed via WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
+        content:
+          "Salam! 🌟\nI am huBot, your smart assistant, here to guide and support you throughout the SHS process. I’m still under development, but as soon as I’m ready, my creators Haris Habib and Abdullah Saleem will update you in the group.\n\nWishing you the very best on your journey toward SHS success 🚀",
         role: 'assistant',
         timestamp: new Date(),
       };
@@ -97,7 +99,7 @@ const HuBot = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl mx-auto"
           >
-            {/* Chat Interface */}
+            {/* Chat Interface (ChatGPT-like) */}
             <div className="flex h-[600px] w-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
               {/* Header */}
               <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-3">
@@ -115,82 +117,55 @@ const HuBot = () => {
                     <span className="text-muted-foreground text-xs">Under Development</span>
                   </div>
                 </div>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={handleReset}
-                  className="h-8 px-2"
-                >
+                <Button variant="ghost" size="sm" onClick={handleReset} className="h-8 px-2">
                   <RotateCcw className="size-4" />
                   <span className="ml-1">Reset</span>
                 </Button>
               </div>
 
-              {/* Messages Area */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                {messages.map((message) => (
-                  <motion.div
-                    key={message.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={cn(
-                      "flex gap-3",
-                      message.role === 'user' ? 'justify-end' : 'justify-start'
-                    )}
-                  >
-                    {message.role === 'assistant' && (
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-brand-blue flex items-center justify-center flex-shrink-0">
-                        <Bot className="h-4 w-4 text-white" />
-                      </div>
-                    )}
-                    
-                    <div
+              {/* Messages */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="mx-auto max-w-2xl px-4 py-4 space-y-4">
+                  {messages.map((message) => (
+                    <motion.div
+                      key={message.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
                       className={cn(
-                        "max-w-[80%] rounded-lg px-4 py-2 text-sm",
-                        message.role === 'user'
-                          ? 'bg-brand-orange text-white'
-                          : 'bg-muted text-foreground'
+                        "w-full rounded-lg px-4 py-3 text-sm",
+                        message.role === 'assistant' ? 'bg-muted' : 'bg-background border'
                       )}
                     >
-                      {message.content}
-                    </div>
-
-                    {message.role === 'user' && (
-                      <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xs font-bold">U</span>
+                      <div className="flex items-start gap-3">
+                        <div className="mt-0.5 h-7 w-7 shrink-0 rounded-full bg-gradient-to-br from-brand-orange to-brand-blue flex items-center justify-center">
+                          <Bot className="h-4 w-4 text-white" />
+                        </div>
+                        <div className="whitespace-pre-wrap">{message.content}</div>
                       </div>
-                    )}
-                  </motion.div>
-                ))}
-                
-                {isTyping && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex gap-3 justify-start"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-brand-blue flex items-center justify-center flex-shrink-0">
-                      <Bot className="h-4 w-4 text-white" />
-                    </div>
-                    <div className="bg-muted rounded-lg px-4 py-2">
-                      <div className="flex items-center gap-1">
+                    </motion.div>
+                  ))}
+
+                  {isTyping && (
+                    <div className="w-full rounded-lg px-4 py-3 text-sm bg-muted">
+                      <div className="flex items-center gap-2 text-muted-foreground">
                         <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" />
                         <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
                         <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                        <span>Thinking…</span>
                       </div>
                     </div>
-                  </motion.div>
-                )}
+                  )}
+                </div>
               </div>
 
-              {/* Input Area */}
+              {/* Input */}
               <div className="border-t p-4">
-                <form onSubmit={handleSubmit} className="flex gap-2">
+                <form onSubmit={handleSubmit} className="mx-auto max-w-2xl flex gap-2">
                   <Textarea
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Ask me anything about SHS..."
+                    placeholder="Send a message..."
                     disabled={isTyping}
                     className="min-h-[44px] max-h-32 resize-none"
                     onKeyDown={(e) => {

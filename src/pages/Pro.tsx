@@ -15,8 +15,8 @@ const Pro = () => {
 
   const plans = [
     {
-      id: 'free',
-      name: 'Free',
+      id: 'standard',
+      name: 'Standard',
       price: {
         onetime: 'Free forever',
       },
@@ -37,7 +37,7 @@ const Pro = () => {
       price: {
         onetime: 299,
       },
-      description: 'Everything you need for a successful SHS application.',
+      description: 'Access everything you need to confidently apply for SHS.',
       features: [
         'All Free features',
         'Advanced University Insights',
@@ -96,16 +96,10 @@ const Pro = () => {
                 Get the guidance you need for your SHS journey. Our pricing is simple, transparent, and designed to help you succeed.
               </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
                 <Tabs defaultValue={frequency} onValueChange={setFrequency}>
                   <TabsList className="bg-muted">
-                    <TabsTrigger value="onetime" className="data-[state=active]:bg-background">
-                      One-time Payment
-                    </TabsTrigger>
+                    <TabsTrigger value="onetime" className="data-[state=active]:bg-background">One-time Payment</TabsTrigger>
                   </TabsList>
                 </Tabs>
               </motion.div>
@@ -158,6 +152,7 @@ const Pro = () => {
                                 format={{ maximumFractionDigits: 0 }}
                                 className="font-secondary"
                               />
+                              <span className="ml-1 text-sm text-muted-foreground">one-time</span>
                             </div>
                           ) : (
                             <span className="text-xl">
