@@ -12,25 +12,25 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 0 0% 9%;
+    --primary: 0 0% 0%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary-foreground: 0 0% 0%;
 
     --muted: 0 0% 84.1%;
     --muted-foreground: 0 0% 45.1%;
 
     --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -52,38 +52,23 @@ All colors MUST be HSL.
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
-    
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
-    
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
-    
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
-    
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
-    
     --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
-    
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
-
-    /* Dark mode brand colors */
-    --brand-orange: 15 100% 64%;
-    --brand-blue: 203 68% 52%;
-    --brand-light-green: 73 24% 25%;
-    --brand-gray: 0 0% 20%;
-    --brand-light-gray: 0 0% 14.9%;
   }
 }
 
@@ -95,7 +80,6 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Manrope', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .font-primary {
@@ -153,7 +137,7 @@ All colors MUST be HSL.
 
   /* Smooth animations */
   .smooth-transition {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Flip card animation */
@@ -185,58 +169,10 @@ All colors MUST be HSL.
   .flip-card-back {
     transform: rotateY(180deg);
   }
-
-  /* HuBot floating button styles */
-  .hubot-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    background: linear-gradient(135deg, hsl(var(--brand-orange)), hsl(var(--brand-blue)));
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    z-index: 100;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hubot-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
-  }
-
-  .hubot-float:active {
-    transform: scale(0.95);
-  }
-
-  .dark .hubot-float {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .dark .hubot-float:hover {
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  /* Ensure proper contrast in dark mode */
-  .dark .text-brand-orange {
-    color: hsl(15 100% 70%);
-  }
-
-  .dark .text-brand-blue {
-    color: hsl(203 68% 65%);
   }
 }

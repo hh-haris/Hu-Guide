@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import HuBotFloat from '../components/HuBotFloat';
 
 const Home = () => {
   const handleGetStarted = () => {
@@ -11,9 +10,8 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
-      <HuBotFloat />
       
       <main className="pt-14 min-h-screen flex items-center">
         <div className="mobile-container w-full">

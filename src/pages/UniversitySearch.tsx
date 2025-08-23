@@ -6,11 +6,11 @@ import Header from '../components/Header';
 
 const UniversitySearch = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray dark:bg-gray-900">
+      <motion.div 
         className="pt-14 bg-brand-light-gray"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
