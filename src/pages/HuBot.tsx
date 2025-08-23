@@ -41,7 +41,7 @@ const HuBot = () => {
     setTimeout(() => {
       const assistantMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
-        content: "I am huBot, your personalized assistance to SHS Scholarship. I am under development. Whenever I am available, you will be informed via WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
+        content: "Salam! 🌟\nI am huBot, your smart assistant, here to guide and support you throughout the SHS process. I'm still under development, but as soon as I'm ready, my creators Haris Habib and Abdullah Saleem will update you in the group.\n\nWishing you the very best on your journey toward SHS success 🚀✨",
         role: 'assistant',
         timestamp: new Date(),
       };

@@ -107,7 +107,7 @@ const Pro = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="grid gap-8 max-w-4xl mx-auto md:grid-cols-2"
+              className="grid gap-6 max-w-5xl mx-auto lg:grid-cols-2 px-4"
             >
               {plans.map((plan, index) => (
                 <motion.div
@@ -115,6 +115,7 @@ const Pro = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 + index * 0.1 }}
+                  className="w-full"
                 >
                   <PricingCard
                     title={plan.title}
