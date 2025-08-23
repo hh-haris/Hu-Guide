@@ -10,8 +10,8 @@ const UniversitySearch = () => {
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray dark:bg-gray-900">
-        className="pt-14 bg-brand-light-gray"
+      <motion.div 
+        className="pt-14 bg-brand-light-gray dark:bg-gray-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}

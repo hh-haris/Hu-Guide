@@ -10,7 +10,6 @@ const MotivationLetter = () => {
 
       {/* Breadcrumb */}
       <motion.div
-        className="pt-14 bg-brand-light-gray"
         className="pt-14 bg-brand-light-gray dark:bg-gray-900"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
