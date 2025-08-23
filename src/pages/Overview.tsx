@@ -7,11 +7,11 @@ import OverviewCarousel from '../components/OverviewCarousel';
 
 const Overview = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray">
+      <div className="pt-14 bg-brand-light-gray dark:bg-gray-900">
         <div className="mobile-container py-3">
           <div className="flex items-center text-sm font-primary">
             <Link to="/" className="text-muted-foreground hover:text-brand-orange smooth-transition">

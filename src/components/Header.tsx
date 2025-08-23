@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,6 +34,7 @@ const Header = () => {
     { name: 'Documents', path: '/documents' },
     { name: 'Cities', path: '/cities' },
     { name: 'Seniors', path: '/seniors' },
+    { name: 'Pro', path: '/pro' },
     { name: 'Official', path: '/official' }
   ];
 
@@ -58,6 +60,9 @@ const Header = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-2">
+              {/* Theme Toggle */}
+              <ThemeToggle />
+              
               {/* Hamburger Menu */}
               <motion.button
                 onClick={toggleMenu}
@@ -86,8 +91,8 @@ const Header = () => {
                       transition={{ duration: 0.2 }}
                       className="flex flex-col space-y-1"
                     >
-                      <div className="w-6 h-0.5 bg-foreground rounded-full"></div>
-                      <div className="w-6 h-0.5 bg-foreground rounded-full"></div>
+                      <div className="w-6 h-0.5 bg-foreground rounded-full transition-colors"></div>
+                      <div className="w-6 h-0.5 bg-foreground rounded-full transition-colors"></div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -113,6 +118,7 @@ const Header = () => {
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
               className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl overflow-y-auto"
+              className="fixed right-0 top-0 h-full w-80 bg-background border-l shadow-xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="p-6 pt-20">
@@ -130,7 +136,7 @@ const Header = () => {
                         className={`block py-3 px-4 rounded-lg smooth-transition text-base font-primary ${
                           isActive(item.path)
                             ? 'bg-brand-orange text-white'
-                            : 'hover:bg-brand-light-gray text-foreground'
+                            : 'hover:bg-brand-light-gray dark:hover:bg-gray-800 text-foreground'
                         }`}
                       >
                         {item.name}
