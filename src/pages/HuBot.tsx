@@ -1,11 +1,11 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Send, RotateCcw, Bot } from 'lucide-react';
+import { ChevronRight, Send, Bot } from 'lucide-react';
 import Header from '../components/Header';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 type ChatMessage = {
   id: string;
@@ -18,7 +18,7 @@ const HuBot = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: '1',
-      content: "Hello! I'm huBot, your personalized assistant for the SHS Scholarship. I'm currently under development. Whenever I'm available, you'll be informed via the WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
+      content: "I am huBot, your personalized assistance to SHS Scholarship. I am under development. Whenever I am available, you will be informed via WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
       role: 'assistant',
       timestamp: new Date(),
     }
@@ -58,19 +58,6 @@ const HuBot = () => {
     }, 1500);
   }, [inputValue, isTyping]);
 
-  const handleReset = useCallback(() => {
-    setMessages([
-      {
-        id: '1',
-        content: "Hello! I'm huBot, your personalized assistant for the SHS Scholarship. I'm currently under development. Whenever I'm available, you'll be informed via the WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
-        role: 'assistant',
-        timestamp: new Date(),
-      }
-    ]);
-    setInputValue('');
-    setIsTyping(false);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -99,30 +86,14 @@ const HuBot = () => {
             {/* Chat Interface */}
             <div className="flex h-[600px] w-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
               {/* Header */}
-              <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <Bot className="h-5 w-5 text-brand-orange" />
-                    <span className="font-secondary text-lg font-bold">
-                      <span className="text-brand-orange">hu</span>
-                      <span className="text-brand-blue">Bot</span>
-                    </span>
-                  </div>
-                  <div className="h-4 w-px bg-border" />
-                  <div className="flex items-center gap-2">
-                    <div className="size-2 rounded-full bg-yellow-500" />
-                    <span className="text-muted-foreground text-xs">Under Development</span>
-                  </div>
+              <div className="flex items-center justify-center border-b bg-muted/50 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <Bot className="h-5 w-5 text-brand-orange" />
+                  <span className="font-secondary text-lg font-bold">
+                    <span className="text-brand-orange">hu</span>
+                    <span className="text-brand-blue">Bot</span>
+                  </span>
                 </div>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={handleReset}
-                  className="h-8 px-2"
-                >
-                  <RotateCcw className="size-4" />
-                  <span className="ml-1">Reset</span>
-                </Button>
               </div>
 
               {/* Messages Area */}
