@@ -25,8 +25,8 @@ const Pro = () => {
         'Access to USAT Guide',
         'General University Finder Guide',
         'Documents Guide',
-        'Cities (Basic Information)',
-        'Seniors (Basic Contact)',
+        'Cities (Job Situation in city and seniors review excluded)',
+        'Seniors',
       ],
       cta: 'Current Plan',
       current: true,
@@ -44,7 +44,7 @@ const Pro = () => {
         'Detailed City Job Market Analysis',
         'Senior Reviews & Experiences',
         'Priority Support',
-        'Upcoming Premium Features',
+        'Benefits of Pro are upcoming',
       ],
       cta: 'Upgrade to Pro',
       popular: true,
@@ -93,7 +93,7 @@ const Pro = () => {
                 transition={{ delay: 0.2 }}
                 className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto"
               >
-                Get the guidance you need for your SHS journey. Our pricing is simple, transparent, and designed to help you succeed.
+                Get the guidance you need for your SHS journey. Our pricing is simple, transparent, and designed to help you succeed. Pro plan is a one-time payment of PKR 299.
               </motion.p>
 
               <motion.div

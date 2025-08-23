@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 type ChatMessage = {
   id: string;
@@ -99,30 +100,14 @@ const HuBot = () => {
             {/* Chat Interface */}
             <div className="flex h-[600px] w-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
               {/* Header */}
-              <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <Bot className="h-5 w-5 text-brand-orange" />
-                    <span className="font-secondary text-lg font-bold">
-                      <span className="text-brand-orange">hu</span>
-                      <span className="text-brand-blue">Bot</span>
-                    </span>
-                  </div>
-                  <div className="h-4 w-px bg-border" />
-                  <div className="flex items-center gap-2">
-                    <div className="size-2 rounded-full bg-yellow-500" />
-                    <span className="text-muted-foreground text-xs">Under Development</span>
-                  </div>
+              <div className="flex items-center justify-center border-b bg-muted/50 px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <Bot className="h-5 w-5 text-brand-orange" />
+                  <span className="font-secondary text-lg font-bold">
+                    <span className="text-brand-orange">hu</span>
+                    <span className="text-brand-blue">Bot</span>
+                  </span>
                 </div>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={handleReset}
-                  className="h-8 px-2"
-                >
-                  <RotateCcw className="size-4" />
-                  <span className="ml-1">Reset</span>
-                </Button>
               </div>
 
               {/* Messages Area */}

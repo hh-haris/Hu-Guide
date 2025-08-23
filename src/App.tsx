@@ -27,6 +27,7 @@ import Seniors from "./pages/Seniors";
 import Official from "./pages/Official";
 import Pro from "./pages/Pro";
 import HuBot from "./pages/HuBot";
+import HuBotFloat from "./components/HuBotFloat";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <HuBotFloat />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/overview" element={<Overview />} />

@@ -36,6 +36,10 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
+    const body = window.document.body;
+
+    // Add transition indicator
+    body.classList.add('theme-transitioning');
 
     root.classList.remove('light', 'dark');
 
@@ -52,7 +56,73 @@ export function ThemeProvider({
 
     root.classList.add(resolvedTheme);
     setActualTheme(resolvedTheme);
+
+    // Update document meta theme-color for mobile browsers
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', resolvedTheme === 'dark' ? '#000000' : '#ffffff');
+    }
+
+    // Announce theme change for screen readers
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
+    announcement.textContent = `Theme changed to ${resolvedTheme} mode`;
+    document.body.appendChild(announcement);
+    
+    // Remove transition indicator after animation
+    setTimeout(() => {
+      body.classList.remove('theme-transitioning');
+      document.body.removeChild(announcement);
+    }, 1000);
   }, [theme]);
+
+  // Listen for system theme changes when using system preference
+  useEffect(() => {
+    if (theme !== 'system') return;
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      const newTheme = e.matches ? 'dark' : 'light';
+      setActualTheme(newTheme);
+      
+      const root = window.document.documentElement;
+      const body = window.document.body;
+      
+      // Add transition indicator
+      body.classList.add('theme-transitioning');
+      
+      root.classList.remove('light', 'dark');
+      root.classList.add(newTheme);
+      
+      // Remove transition indicator after animation
+      setTimeout(() => {
+        body.classList.remove('theme-transitioning');
+      }, 1000);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [theme]);
+
+  // Keyboard shortcuts for theme switching
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ctrl/Cmd + T for theme toggle
+      if ((e.ctrlKey || e.metaKey) && e.key === 't') {
+        e.preventDefault();
+        const themes: Theme[] = ['light', 'dark', 'system'];
+        const currentIndex = themes.indexOf(theme);
+        const nextIndex = (currentIndex + 1) % themes.length;
+        setTheme(themes[nextIndex]);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [theme, setTheme]);
 
   const value = {
     theme,
