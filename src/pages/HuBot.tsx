@@ -16,15 +16,7 @@ type ChatMessage = {
 };
 
 const HuBot = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: '1',
-      content: "Hello! I'm huBot, your personalized assistant for the SHS Scholarship. I'm currently under development. Whenever I'm available, you'll be informed via the WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
-      role: 'assistant',
-      timestamp: new Date(),
-    }
-  ]);
-  
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
@@ -60,14 +52,7 @@ const HuBot = () => {
   }, [inputValue, isTyping]);
 
   const handleReset = useCallback(() => {
-    setMessages([
-      {
-        id: '1',
-        content: "Hello! I'm huBot, your personalized assistant for the SHS Scholarship. I'm currently under development. Whenever I'm available, you'll be informed via the WhatsApp group by my creators Haris Habib and Abdullah Saleem.",
-        role: 'assistant',
-        timestamp: new Date(),
-      }
-    ]);
+    setMessages([]);
     setInputValue('');
     setIsTyping(false);
   }, []);
@@ -95,119 +80,137 @@ const HuBot = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
             {/* Chat Interface */}
-            <div className="flex h-[600px] w-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
+            <div className="flex h-[70vh] w-full flex-col overflow-hidden rounded-xl border bg-card shadow-sm">
               {/* Header */}
-              <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-3">
+              <div className="flex items-center justify-between border-b bg-muted/50 px-6 py-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <Bot className="h-5 w-5 text-brand-orange" />
-                    <span className="font-secondary text-lg font-bold">
+                  <Bot className="h-6 w-6 text-brand-orange" />
+                  <div>
+                    <span className="font-secondary text-xl font-bold">
                       <span className="text-brand-orange">hu</span>
                       <span className="text-brand-blue">Bot</span>
                     </span>
-                  </div>
-                  <div className="h-4 w-px bg-border" />
-                  <div className="flex items-center gap-2">
-                    <div className="size-2 rounded-full bg-yellow-500" />
-                    <span className="text-muted-foreground text-xs">Under Development</span>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="size-2 rounded-full bg-yellow-500" />
+                      <span className="text-muted-foreground text-xs">Under Development</span>
+                    </div>
                   </div>
                 </div>
                 <Button 
                   variant="ghost" 
-                  size="sm"
+                  size="icon"
                   onClick={handleReset}
-                  className="h-8 px-2"
+                  className="h-9 w-9 hover:bg-muted"
+                  aria-label="Reset conversation"
                 >
                   <RotateCcw className="size-4" />
-                  <span className="ml-1">Reset</span>
                 </Button>
               </div>
 
               {/* Messages Area */}
-              <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                {messages.map((message) => (
-                  <motion.div
-                    key={message.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className={cn(
-                      "flex gap-3",
-                      message.role === 'user' ? 'justify-end' : 'justify-start'
-                    )}
-                  >
-                    {message.role === 'assistant' && (
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-brand-blue flex items-center justify-center flex-shrink-0">
-                        <Bot className="h-4 w-4 text-white" />
-                      </div>
-                    )}
-                    
-                    <div
-                      className={cn(
-                        "max-w-[80%] rounded-lg px-4 py-2 text-sm",
-                        message.role === 'user'
-                          ? 'bg-brand-orange text-white'
-                          : 'bg-muted text-foreground'
-                      )}
-                    >
-                      {message.content}
+              <div className="flex-1 overflow-y-auto p-6">
+                {messages.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center h-full text-center space-y-4">
+                    <Bot className="h-16 w-16 text-muted-foreground/50" />
+                    <div className="space-y-2">
+                      <h3 className="font-secondary text-xl font-semibold text-muted-foreground">
+                        <span className="text-brand-orange">hu</span>
+                        <span className="text-brand-blue">Bot</span>
+                      </h3>
+                      <p className="text-muted-foreground text-sm max-w-md">
+                        Your personalized assistant for SHS Scholarship. Ask me anything to get started!
+                      </p>
                     </div>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    {messages.map((message) => (
+                      <motion.div
+                        key={message.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className={cn(
+                          "flex gap-4",
+                          message.role === 'user' ? 'justify-end' : 'justify-start'
+                        )}
+                      >
+                        {message.role === 'assistant' && (
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-brand-blue flex items-center justify-center flex-shrink-0 mt-1">
+                            <Bot className="h-4 w-4 text-white" />
+                          </div>
+                        )}
+                        
+                        <div
+                          className={cn(
+                            "max-w-[70%] rounded-2xl px-4 py-3 text-sm leading-relaxed",
+                            message.role === 'user'
+                              ? 'bg-brand-orange text-white'
+                              : 'bg-muted text-foreground border'
+                          )}
+                        >
+                          {message.content}
+                        </div>
 
-                    {message.role === 'user' && (
-                      <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xs font-bold">U</span>
-                      </div>
+                        {message.role === 'user' && (
+                          <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0 mt-1">
+                            <span className="text-white text-xs font-bold">U</span>
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                    
+                    {isTyping && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex gap-4 justify-start"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-brand-blue flex items-center justify-center flex-shrink-0 mt-1">
+                          <Bot className="h-4 w-4 text-white" />
+                        </div>
+                        <div className="bg-muted border rounded-2xl px-4 py-3">
+                          <div className="flex items-center gap-1">
+                            <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" />
+                            <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                            <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                          </div>
+                        </div>
+                      </motion.div>
                     )}
-                  </motion.div>
-                ))}
-                
-                {isTyping && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex gap-3 justify-start"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-orange to-brand-blue flex items-center justify-center flex-shrink-0">
-                      <Bot className="h-4 w-4 text-white" />
-                    </div>
-                    <div className="bg-muted rounded-lg px-4 py-2">
-                      <div className="flex items-center gap-1">
-                        <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" />
-                        <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                        <div className="w-2 h-2 bg-brand-orange rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                      </div>
-                    </div>
-                  </motion.div>
+                  </div>
                 )}
               </div>
 
               {/* Input Area */}
               <div className="border-t p-4">
-                <form onSubmit={handleSubmit} className="flex gap-2">
-                  <Textarea
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Ask me anything about SHS..."
-                    disabled={isTyping}
-                    className="min-h-[44px] max-h-32 resize-none"
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleSubmit(e);
-                      }
-                    }}
-                  />
-                  <Button
-                    type="submit"
-                    size="icon"
-                    disabled={!inputValue.trim() || isTyping}
-                    className="bg-brand-orange hover:bg-brand-orange/90 text-white h-11 w-11 flex-shrink-0"
-                  >
-                    <Send className="h-4 w-4" />
-                  </Button>
+                <form onSubmit={handleSubmit} className="flex gap-3 max-w-4xl mx-auto">
+                  <div className="flex-1 relative">
+                    <Textarea
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      placeholder="Ask me anything about SHS..."
+                      disabled={isTyping}
+                      className="min-h-[52px] max-h-32 resize-none pr-12 rounded-xl border-2 focus:border-brand-orange"
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleSubmit(e);
+                        }
+                      }}
+                    />
+                    <Button
+                      type="submit"
+                      size="icon"
+                      disabled={!inputValue.trim() || isTyping}
+                      className="absolute right-2 bottom-2 h-8 w-8 bg-brand-orange hover:bg-brand-orange/90 text-white rounded-lg"
+                    >
+                      <Send className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </form>
               </div>
             </div>
