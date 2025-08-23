@@ -33,7 +33,7 @@ const HuBotFloat = () => {
         transition={{ delay: 3 }}
         className="absolute right-16 top-1/2 -translate-y-1/2 bg-foreground text-background px-3 py-1 rounded-lg text-xs font-medium whitespace-nowrap shadow-lg"
       >
-        huBot
+        HuBot
         <div className="absolute right-[-4px] top-1/2 -translate-y-1/2 w-0 h-0 border-l-4 border-l-foreground border-t-2 border-b-2 border-t-transparent border-b-transparent" />
       </motion.div>
     </motion.div>

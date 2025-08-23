@@ -47,6 +47,13 @@ All colors MUST be HSL.
     --brand-light-green: 73 24% 75%;
     --brand-gray: 0 0% 84%;
     --brand-light-gray: 0 0% 96%;
+
+    /* Additional theme variables */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
 
   .dark {
@@ -78,12 +85,35 @@ All colors MUST be HSL.
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
 
-    /* Dark mode brand colors */
-    --brand-orange: 15 100% 64%;
-    --brand-blue: 203 68% 52%;
+    /* Dark mode brand colors with improved contrast */
+    --brand-orange: 15 100% 70%;
+    --brand-blue: 203 68% 65%;
     --brand-light-green: 73 24% 25%;
     --brand-gray: 0 0% 20%;
     --brand-light-gray: 0 0% 14.9%;
+
+    /* Dark mode shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+  }
+
+  /* Smooth theme transitions */
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
+    transition: 
+      background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      fill 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -96,6 +126,15 @@ All colors MUST be HSL.
     @apply bg-background text-foreground font-sans;
     font-family: 'Manrope', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
+    /* Ensure proper color contrast */
+    color-scheme: light dark;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--brand-orange));
+    outline-offset: 2px;
+    border-radius: 0.25rem;
   }
 
   .font-primary {
@@ -198,7 +237,7 @@ All colors MUST be HSL.
     border-radius: 50px;
     text-align: center;
     font-size: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
     z-index: 100;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
@@ -210,19 +249,24 @@ All colors MUST be HSL.
 
   .hubot-float:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-xl);
   }
 
   .hubot-float:active {
     transform: scale(0.95);
   }
 
+  .hubot-float:focus-visible {
+    outline: 2px solid hsl(var(--brand-orange));
+    outline-offset: 2px;
+  }
+
   .dark .hubot-float {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-lg);
   }
 
   .dark .hubot-float:hover {
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--shadow-xl);
   }
 }
 
@@ -238,5 +282,34 @@ All colors MUST be HSL.
 
   .dark .text-brand-blue {
     color: hsl(203 68% 65%);
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --brand-orange: 15 100% 50%;
+      --brand-blue: 203 68% 30%;
+      --border: 0 0% 0%;
+    }
+    
+    .dark {
+      --brand-orange: 15 100% 80%;
+      --brand-blue: 203 68% 80%;
+      --border: 0 0% 100%;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .theme-transition,
+    .theme-transition *,
+    .theme-transition *::before,
+    .theme-transition *::after {
+      transition: none !important;
+    }
+    
+    .smooth-transition {
+      transition: none !important;
+    }
   }
 }
