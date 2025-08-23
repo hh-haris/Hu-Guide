@@ -117,7 +117,6 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl overflow-y-auto"
               className="fixed right-0 top-0 h-full w-80 bg-background border-l shadow-xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
