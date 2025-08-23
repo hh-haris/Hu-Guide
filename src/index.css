@@ -75,15 +75,15 @@ All colors MUST be HSL.
     --destructive-foreground: 0 0% 98%;
     
     --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
+    --input: 0 0% 89.8%;
     --ring: 0 0% 83.1%;
 
-    /* Dark mode brand colors */
-    --brand-orange: 15 100% 64%;
-    --brand-blue: 203 68% 52%;
-    --brand-light-green: 73 24% 25%;
-    --brand-gray: 0 0% 20%;
-    --brand-light-gray: 0 0% 14.9%;
+    /* Dark mode brand colors with improved contrast */
+    --brand-orange: 15 100% 70%;
+    --brand-blue: 203 68% 65%;
+    --brand-light-green: 73 24% 35%;
+    --brand-gray: 0 0% 25%;
+    --brand-light-gray: 0 0% 18%;
   }
 }
 
@@ -95,7 +95,72 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Manrope', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Smooth theme transitions for all elements */
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Theme transition indicator */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--brand-orange)), hsl(var(--brand-blue)));
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  body.theme-transitioning::before {
+    opacity: 1;
+  }
+
+  /* Subtle background pattern */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--brand-orange) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--brand-blue) / 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .dark body::after {
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--brand-orange) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--brand-blue) / 0.05) 0%, transparent 50%);
+  }
+
+  /* Focus indicators for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--brand-orange));
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  /* Dark mode focus indicators */
+  .dark *:focus-visible {
+    outline-color: hsl(15 100% 70%);
+  }
+
+  /* Theme toggle glow effect */
+  .theme-toggle-glow {
+    box-shadow: 0 0 20px hsl(var(--brand-orange) / 0.3);
+  }
+
+  .dark .theme-toggle-glow {
+    box-shadow: 0 0 20px hsl(var(--brand-orange) / 0.5);
   }
 
   .font-primary {
@@ -238,5 +303,18 @@ All colors MUST be HSL.
 
   .dark .text-brand-blue {
     color: hsl(203 68% 65%);
+  }
+
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 }

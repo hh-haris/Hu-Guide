@@ -22,7 +22,12 @@ const HuBotFloat = () => {
           whileTap={{ scale: 0.95 }}
           aria-label="Open HuBot Assistant"
         >
-          <Bot className="h-6 w-6 text-white group-hover:animate-pulse" />
+          <motion.div
+            animate={{ rotate: [0, 10, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Bot className="h-6 w-6 text-white group-hover:animate-pulse" />
+          </motion.div>
         </motion.button>
       </Link>
       
