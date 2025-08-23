@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
+import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +60,18 @@ const Header = () => {
             </motion.div>
 
             {/* Right side controls */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-3">
+              {/* Premium Button */}
+              <Link to="/pro">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="bg-black hover:bg-black/90 text-white rounded-full px-4 py-1 text-xs font-medium"
+                >
+                  Premium
+                </Button>
+              </Link>
+              
               {/* Theme Toggle */}
               <ThemeToggle />
               
