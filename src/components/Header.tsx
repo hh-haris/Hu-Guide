@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggler';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,9 +58,6 @@ const Header = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-2">
-              {/* Theme Toggle */}
-              <AnimatedThemeToggler />
-              
               {/* Hamburger Menu */}
               <motion.button
                 onClick={toggleMenu}
