@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/hooks/use-theme";
 import Home from "./pages/Home";
 import Overview from "./pages/Overview";
 import Timeline from "./pages/Timeline";
@@ -24,15 +25,17 @@ import Universities from "./pages/Universities";
 import UniversitySearch from "./pages/UniversitySearch";
 import Seniors from "./pages/Seniors";
 import Official from "./pages/Official";
+import ThemeDemo from "./pages/ThemeDemo";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+    <ThemeProvider defaultTheme="system" storageKey="hungaricum-theme">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/overview" element={<Overview />} />
@@ -53,11 +56,13 @@ const App = () => (
           <Route path="/cities/:citySlug" element={<CityDetail />} />
           <Route path="/seniors" element={<Seniors />} />
           <Route path="/official" element={<Official />} />
+          <Route path="/theme-demo" element={<ThemeDemo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </TooltipProvider>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

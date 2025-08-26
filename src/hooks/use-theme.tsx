@@ -52,6 +52,28 @@ export function ThemeProvider({
 
     root.classList.add(resolvedTheme);
     setActualTheme(resolvedTheme);
+
+    // Add transition class after theme change to ensure smooth transition
+    root.style.colorScheme = resolvedTheme;
+  }, [theme]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    if (theme !== 'system') return;
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      const root = window.document.documentElement;
+      root.classList.remove('light', 'dark');
+      const newTheme = e.matches ? 'dark' : 'light';
+      root.classList.add(newTheme);
+      setActualTheme(newTheme);
+      root.style.colorScheme = newTheme;
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
   const value = {
