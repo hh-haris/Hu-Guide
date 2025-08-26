@@ -37,21 +37,37 @@ export function ThemeProvider({
   useEffect(() => {
     const root = window.document.documentElement;
 
-    root.classList.remove('light', 'dark');
+    const applyTheme = (desired: Theme) => {
+      root.classList.remove('light', 'dark');
 
-    let resolvedTheme: 'dark' | 'light';
+      let resolvedTheme: 'dark' | 'light';
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      resolvedTheme = systemTheme;
-    } else {
-      resolvedTheme = theme;
-    }
+      if (desired === 'system') {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+        resolvedTheme = systemTheme;
+      } else {
+        resolvedTheme = desired;
+      }
 
-    root.classList.add(resolvedTheme);
-    setActualTheme(resolvedTheme);
+      root.classList.add(resolvedTheme);
+      setActualTheme(resolvedTheme);
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeMeta) themeMeta.setAttribute('content', resolvedTheme === 'dark' ? '#0a0a0a' : '#ffffff');
+    };
+
+    applyTheme(theme);
+
+    const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => {
+      if (theme === 'system') applyTheme('system');
+    };
+    mql.addEventListener?.('change', handleChange);
+
+    return () => {
+      mql.removeEventListener?.('change', handleChange);
+    };
   }, [theme]);
 
   const value = {

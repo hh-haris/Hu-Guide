@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggler';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ const Header = () => {
   return (
     <>
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-gray"
+        className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -58,10 +59,11 @@ const Header = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-2">
+              <AnimatedThemeToggler />
               {/* Hamburger Menu */}
               <motion.button
                 onClick={toggleMenu}
-                className="p-2 hover:bg-brand-light-gray rounded-full smooth-transition"
+                className="p-2 hover:bg-accent rounded-full smooth-transition"
                 aria-label="Menu"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -112,7 +114,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl overflow-y-auto"
+              className="fixed right-0 top-0 h-full w-80 bg-background shadow-xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="p-6 pt-20">
@@ -130,7 +132,7 @@ const Header = () => {
                         className={`block py-3 px-4 rounded-lg smooth-transition text-base font-primary ${
                           isActive(item.path)
                             ? 'bg-brand-orange text-white'
-                            : 'hover:bg-brand-light-gray text-foreground'
+                            : 'hover:bg-accent text-foreground'
                         }`}
                       >
                         {item.name}

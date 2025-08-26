@@ -13,6 +13,20 @@ All colors MUST be HSL.
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
+    
+    /* Enable smooth theme transitions */
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
@@ -80,6 +94,19 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Manrope', sans-serif;
+  }
+
+  /* Smooth theme transitions */
+  html, body, #root, [data-theme-transition] {
+    transition-property: background-color, color, border-color, fill, stroke;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html, body, #root, [data-theme-transition] {
+      transition: none !important;
+    }
   }
 
   .font-primary {
