@@ -40,11 +40,11 @@ const USATCommerce = () => {
 
 
 
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray">
+      <div className="pt-14 bg-muted">
         <div className="mobile-container py-3">
           <div className="flex items-center text-sm font-primary">
             <Link to="/" className="text-muted-foreground hover:text-brand-orange smooth-transition">
@@ -311,10 +311,10 @@ const USATCommerce = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Past Papers</h3>
-                <button onClick={() => setShowPastPapers(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
+                <button onClick={() => setShowPastPapers(false)} className="p-1 hover:bg-muted rounded-full smooth-transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -360,10 +360,10 @@ const USATCommerce = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Study Resources</h3>
-                <button onClick={() => setShowStudyResources(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
+                <button onClick={() => setShowStudyResources(false)} className="p-1 hover:bg-muted rounded-full smooth-transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -410,10 +410,10 @@ const USATCommerce = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-md max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-md max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Commerce Studies in Hungary</h3>
-                <button onClick={() => setShowProsCons(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
+                <button onClick={() => setShowProsCons(false)} className="p-1 hover:bg-muted rounded-full smooth-transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -487,10 +487,10 @@ const USATCommerce = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Study Resources</h3>
-                <button onClick={() => setShowStudyResources(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
+                <button onClick={() => setShowStudyResources(false)} className="p-1 hover:bg-muted rounded-full smooth-transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>

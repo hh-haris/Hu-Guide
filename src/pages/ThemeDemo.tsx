@@ -52,10 +52,7 @@ const ThemeDemo = () => {
               </p>
               <div className="flex items-center justify-center gap-4">
                 <Badge variant="secondary">
-                  Current Theme: {theme}
-                </Badge>
-                <Badge variant="outline">
-                  Active: {actualTheme}
+                  Current Theme: {actualTheme}
                 </Badge>
               </div>
             </motion.div>
@@ -71,15 +68,15 @@ const ThemeDemo = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground">
-                    This toggle provides smooth animations, proper accessibility labels, 
-                    keyboard navigation support, and focus indicators.
+                    Simple sun/moon toggle that smoothly transitions between light and dark themes.
+                    Shows sun icon in light mode, moon icon in dark mode.
                   </p>
                   <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-                    <li>✅ ARIA labels and role="switch"</li>
-                    <li>✅ Keyboard navigation (Enter/Space)</li>
-                    <li>✅ Focus ring indicators</li>
+                    <li>✅ Simple light/dark toggle (no system option)</li>
+                    <li>✅ Sun icon for light mode</li>
+                    <li>✅ Moon icon for dark mode</li>
                     <li>✅ Smooth Framer Motion animations</li>
-                    <li>✅ Hover states for better UX</li>
+                    <li>✅ Standard button styling with hover states</li>
                   </ul>
                 </CardContent>
               </Card>

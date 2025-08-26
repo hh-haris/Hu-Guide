@@ -8,87 +8,48 @@ export function AnimatedThemeToggler() {
   const isDark = actualTheme === 'dark';
 
   const toggleTheme = () => {
+    // Simple toggle between light and dark only (no system option)
     setTheme(isDark ? 'light' : 'dark');
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      toggleTheme();
-    }
   };
 
   return (
     <button
       onClick={toggleTheme}
-      onKeyDown={handleKeyDown}
-      className="relative w-14 h-8 bg-gray-200 dark:bg-gray-700 rounded-full p-1 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background hover:bg-gray-300 dark:hover:bg-gray-600"
-      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode. Currently in ${isDark ? 'dark' : 'light'} mode.`}
-      role="switch"
-      aria-checked={isDark}
-      title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      tabIndex={0}
+      className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      type="button"
     >
-      {/* Background track */}
       <motion.div
-        className="absolute inset-1 rounded-full"
+        initial={false}
         animate={{
-          backgroundColor: isDark ? '#1f2937' : '#e5e7eb',
-        }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
-      />
-      
-      {/* Sliding circle */}
-      <motion.div
-        className="relative w-6 h-6 bg-white dark:bg-gray-800 rounded-full shadow-lg flex items-center justify-center z-10"
-        animate={{
-          x: isDark ? 20 : 0,
-          backgroundColor: isDark ? '#1f2937' : '#ffffff',
+          scale: isDark ? 0 : 1,
+          opacity: isDark ? 0 : 1,
+          rotate: isDark ? 180 : 0,
         }}
         transition={{
-          type: 'spring',
-          stiffness: 300,
-          damping: 30,
+          duration: 0.3,
+          ease: "easeInOut",
         }}
+        className="absolute"
       >
-        {/* Sun icon */}
-        <motion.div
-          className="absolute"
-          animate={{
-            opacity: isDark ? 0 : 1,
-            scale: isDark ? 0.8 : 1,
-            rotate: isDark ? 180 : 0,
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-        >
-          <Sun className="w-3 h-3 text-yellow-500" />
-        </motion.div>
-        
-        {/* Moon icon */}
-        <motion.div
-          className="absolute"
-          animate={{
-            opacity: isDark ? 1 : 0,
-            scale: isDark ? 1 : 0.8,
-            rotate: isDark ? 0 : -180,
-          }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-        >
-          <Moon className="w-3 h-3 text-blue-300" />
-        </motion.div>
+        <Sun className="h-4 w-4" />
       </motion.div>
       
-      {/* Background gradient overlay */}
       <motion.div
-        className="absolute inset-0 rounded-full"
+        initial={false}
         animate={{
-          background: isDark
-            ? 'linear-gradient(45deg, #1e3a8a, #3730a3)'
-            : 'linear-gradient(45deg, #fbbf24, #f59e0b)',
+          scale: isDark ? 1 : 0,
+          opacity: isDark ? 1 : 0,
+          rotate: isDark ? 0 : -180,
         }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
-        style={{ opacity: 0.1 }}
-      />
+        transition={{
+          duration: 0.3,
+          ease: "easeInOut",
+        }}
+        className="absolute"
+      >
+        <Moon className="h-4 w-4" />
+      </motion.div>
     </button>
   );
 }

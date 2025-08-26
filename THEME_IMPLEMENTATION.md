@@ -15,10 +15,11 @@ This project implements a fully accessible dark mode website with all the reques
 ### 🔄 AnimatedThemeToggler Component
 - **Location**: `src/components/magicui/animated-theme-toggler.tsx`
 - **Demo Component**: `src/components/AnimatedThemeTogglerDemo.tsx` (as requested)
-- Smooth Framer Motion animations
-- Spring-based transitions
-- Icon morphing between sun and moon
-- Gradient background effects
+- Simple sun/moon icon toggle (exactly like Magic UI)
+- Sun icon shown in light mode
+- Moon icon shown in dark mode
+- Smooth Framer Motion transitions
+- Standard button styling
 
 ### 🔧 Theme Management
 - **Location**: `src/hooks/use-theme.tsx`
@@ -29,12 +30,12 @@ This project implements a fully accessible dark mode website with all the reques
 ### 💾 Persistent User Preferences
 - LocalStorage integration
 - Preference key: `hungaricum-theme`
-- Supports: `light`, `dark`, `system` modes
+- Supports: `light` and `dark` modes only
 
-### 🖥️ System Preference Support
-- `prefers-color-scheme` media query detection
-- Real-time system preference change listener
-- Automatic theme switching when set to "system"
+### 🖥️ Simple Theme Management
+- Direct light/dark theme switching
+- No system preference complexity
+- Simple toggle behavior exactly like Magic UI
 
 ### 🎭 Smooth Transitions
 - Global CSS transitions on theme changes

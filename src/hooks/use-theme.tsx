@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: 'light',
   setTheme: () => null,
   actualTheme: 'light',
 };
@@ -24,7 +24,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'light',
   storageKey = 'hungaricum-theme',
   ...props
 }: ThemeProviderProps) {
@@ -39,16 +39,8 @@ export function ThemeProvider({
 
     root.classList.remove('light', 'dark');
 
-    let resolvedTheme: 'dark' | 'light';
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      resolvedTheme = systemTheme;
-    } else {
-      resolvedTheme = theme;
-    }
+    // Simple theme resolution - just use the theme directly
+    const resolvedTheme = theme === 'dark' ? 'dark' : 'light';
 
     root.classList.add(resolvedTheme);
     setActualTheme(resolvedTheme);
@@ -57,24 +49,7 @@ export function ThemeProvider({
     root.style.colorScheme = resolvedTheme;
   }, [theme]);
 
-  // Listen for system theme changes
-  useEffect(() => {
-    if (theme !== 'system') return;
 
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const handleChange = (e: MediaQueryListEvent) => {
-      const root = window.document.documentElement;
-      root.classList.remove('light', 'dark');
-      const newTheme = e.matches ? 'dark' : 'light';
-      root.classList.add(newTheme);
-      setActualTheme(newTheme);
-      root.style.colorScheme = newTheme;
-    };
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, [theme]);
 
   const value = {
     theme,
