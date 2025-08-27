@@ -175,4 +175,7 @@ All colors MUST be HSL.
   .text-balance {
     text-wrap: balance;
   }
+  /* Ensure text remains black on brand light green backgrounds in dark mode */
+  .dark .bg-brand-light-green { color: hsl(0 0% 0%) !important; }
+  .dark .bg-brand-light-green * { color: hsl(0 0% 0%) !important; }
 }
