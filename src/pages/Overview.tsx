@@ -7,7 +7,7 @@ import OverviewCarousel from '../components/OverviewCarousel';
 
 const Overview = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
