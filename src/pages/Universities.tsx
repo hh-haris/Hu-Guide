@@ -13,7 +13,7 @@ import {
 
 const Universities = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-14">
