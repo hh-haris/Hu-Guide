@@ -222,7 +222,7 @@ const OverviewCarousel = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
-              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
@@ -280,7 +280,7 @@ const OverviewCarousel = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
-              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">

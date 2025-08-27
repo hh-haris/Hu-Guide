@@ -37,7 +37,7 @@ const USATGeneralScience = () => {
     link: "https://drive.google.com/drive/folders/1DzYs4QSVONwQ7XuLbCJywths93DVJ2A"
 
   }];
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
@@ -310,7 +310,7 @@ const USATGeneralScience = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Past Papers</h3>
                 <button onClick={() => setShowPastPapers(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
@@ -359,7 +359,7 @@ const USATGeneralScience = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Study Resources</h3>
                 <button onClick={() => setShowStudyResources(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
@@ -409,7 +409,7 @@ const USATGeneralScience = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-md max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-md max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">General Science Studies in Hungary</h3>
                 <button onClick={() => setShowProsCons(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">

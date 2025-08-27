@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: 'light',
   setTheme: () => null,
   actualTheme: 'light',
 };
@@ -24,7 +24,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'light',
   storageKey = 'hungaricum-theme',
   ...props
 }: ThemeProviderProps) {
@@ -41,14 +41,7 @@ export function ThemeProvider({
 
     let resolvedTheme: 'dark' | 'light';
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      resolvedTheme = systemTheme;
-    } else {
-      resolvedTheme = theme;
-    }
+    resolvedTheme = theme;
 
     root.classList.add(resolvedTheme);
     setActualTheme(resolvedTheme);

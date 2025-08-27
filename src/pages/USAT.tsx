@@ -110,7 +110,7 @@ const USAT = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
@@ -287,7 +287,7 @@ const USAT = () => {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         transition={{ type: "spring", damping: 20 }}
-        className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+        className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Heading */}

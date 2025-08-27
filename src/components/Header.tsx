@@ -1,11 +1,15 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { useState as useReactState } from 'react';
+import SearchDialog from '@/components/SearchDialog';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useReactState(false);
   const location = useLocation();
 
   // Listen for custom event from Get Started button
@@ -39,7 +43,7 @@ const Header = () => {
   return (
     <>
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-gray"
+        className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-brand-gray"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -58,6 +62,14 @@ const Header = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="p-2 hover:bg-brand-light-gray rounded-full smooth-transition"
+                aria-label="Search"
+              >
+                <Search className="h-5 w-5" />
+              </button>
+              <ThemeToggle />
               {/* Hamburger Menu */}
               <motion.button
                 onClick={toggleMenu}
@@ -112,7 +124,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl overflow-y-auto"
+              className="fixed right-0 top-0 h-full w-80 bg-background shadow-xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="p-6 pt-20">
@@ -143,6 +155,8 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <SearchDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </>
   );
 };
