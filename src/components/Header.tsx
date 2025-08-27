@@ -1,15 +1,11 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Search } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { useState as useReactState } from 'react';
-import SearchDialog from '@/components/SearchDialog';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useReactState(false);
   const location = useLocation();
 
   // Listen for custom event from Get Started button
@@ -62,14 +58,6 @@ const Header = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-2">
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="p-2 hover:bg-brand-light-gray rounded-full smooth-transition"
-                aria-label="Search"
-              >
-                <Search className="h-5 w-5" />
-              </button>
-              <ThemeToggle />
               {/* Hamburger Menu */}
               <motion.button
                 onClick={toggleMenu}
@@ -156,7 +144,6 @@ const Header = () => {
         )}
       </AnimatePresence>
 
-      <SearchDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />
     </>
   );
 };
