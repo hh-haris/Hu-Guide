@@ -113,6 +113,32 @@ All colors MUST be HSL.
   .bg-brand-light-green {
     background-color: hsl(var(--brand-light-green));
   }
+  
+  /* Ensure text on green backgrounds stays dark in both light and dark mode */
+  .bg-brand-light-green {
+    color: hsl(0 0% 9%); /* Dark text color for readability on green background */
+  }
+  
+  .bg-brand-light-green .text-foreground {
+    color: hsl(0 0% 9%) !important;
+  }
+  
+  .bg-brand-light-green .text-muted-foreground {
+    color: hsl(0 0% 25%) !important;
+  }
+  
+  /* Ensure buttons and clickable elements with green backgrounds have dark text */
+  button.bg-brand-light-green,
+  a.bg-brand-light-green,
+  .bg-brand-light-green button,
+  .bg-brand-light-green a {
+    color: hsl(0 0% 9%) !important;
+  }
+  
+  /* Override any hover states to maintain dark text */
+  .bg-brand-light-green:hover {
+    color: hsl(0 0% 9%) !important;
+  }
 
   .bg-brand-gray {
     background-color: hsl(var(--brand-gray));
