@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <>
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-gray"
+        className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-brand-gray"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -112,7 +112,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-xl overflow-y-auto"
+              className="fixed right-0 top-0 h-full w-80 bg-background shadow-xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <nav className="p-6 pt-20">
@@ -143,6 +143,7 @@ const Header = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
     </>
   );
 };

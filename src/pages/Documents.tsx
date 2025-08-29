@@ -41,7 +41,7 @@ const Documents = () => {
   const toggleFAQ = (index: number) => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
   };
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
@@ -220,7 +220,7 @@ Universities will form their first impression of you based on this document, so 
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-orange">Documents</h3>
                 <button onClick={() => setShowDocumentsModal(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
@@ -295,7 +295,7 @@ Universities will form their first impression of you based on this document, so 
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Tools</h3>
                 <button onClick={() => setShowToolsModal(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
@@ -342,7 +342,7 @@ Universities will form their first impression of you based on this document, so 
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-orange">CV</h3>
                 <button onClick={() => setShowCVModal(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">

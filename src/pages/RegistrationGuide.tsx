@@ -66,7 +66,7 @@ const RegistrationGuide = () => {
   }, [api]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
@@ -124,7 +124,7 @@ const RegistrationGuide = () => {
                               />
                               <button
                                 onClick={() => setShowExpandedImage(true)}
-                                className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full p-2 hover:bg-white smooth-transition"
+                                className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm rounded-full p-2 hover:bg-background smooth-transition"
                               >
                                 <Expand className="h-4 w-4 text-brand-blue" />
                               </button>

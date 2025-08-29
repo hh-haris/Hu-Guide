@@ -107,7 +107,7 @@ const TimelinePage = () => {
     title: "Arrival in Hungary",
     description: "After visa approval, candidates arrive in Hungary in September. The above countdown isn’t just a timer it’s your victory clock ticking down to your very first class in Hungary, usually on 1 September at 9:00 AM. Congratulations, you’ve made it! 🎉"
   }];
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
