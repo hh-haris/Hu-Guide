@@ -3,15 +3,28 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ThemeToggle } from './ThemeToggle';
+import { AnimatedThemeToggler } from './magicui/animated-theme-toggler';
+import { searchService, type SearchItem } from '../services/searchService';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchItem[]>([]);
+  const [searchData, setSearchData] = useState<SearchItem[]>([]);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Initialize search data and subscribe to updates
+  useEffect(() => {
+    setSearchData(searchService.getData());
+    
+    const unsubscribe = searchService.subscribe((data) => {
+      setSearchData(data);
+    });
+
+    return unsubscribe;
+  }, []);
 
   // Listen for custom event from Get Started button
   useEffect(() => {
@@ -55,48 +68,9 @@ const Header = () => {
     { name: 'Official', path: '/official' }
   ];
 
-  // Universal search data - this would ideally come from a search index
-  const searchData = [
-    // Pages
-    { type: 'page', name: 'Overview', path: '/overview', description: 'General overview of Stipendium Hungaricum' },
-    { type: 'page', name: 'Timeline', path: '/timeline', description: 'Application timeline and deadlines' },
-    { type: 'page', name: 'USAT', path: '/usat', description: 'University Selection and Aptitude Test information' },
-    { type: 'page', name: 'University Finder', path: '/university-search', description: 'Search and find universities' },
-    { type: 'page', name: 'Documents', path: '/documents', description: 'Required documents for application' },
-    { type: 'page', name: 'Cities', path: '/cities', description: 'Information about Hungarian cities' },
-    { type: 'page', name: 'Seniors', path: '/seniors', description: 'Connect with seniors and their experiences' },
-    { type: 'page', name: 'Official', path: '/official', description: 'Official information and links' },
-    
-    // USAT subjects
-    { type: 'content', name: 'USAT Computer Science', path: '/usat/computer-science', description: 'Computer Science USAT preparation' },
-    { type: 'content', name: 'USAT Medical', path: '/usat/medical', description: 'Medical USAT preparation' },
-    { type: 'content', name: 'USAT Engineering', path: '/usat/engineering', description: 'Engineering USAT preparation' },
-    { type: 'content', name: 'USAT Arts', path: '/usat/arts', description: 'Arts USAT preparation' },
-    { type: 'content', name: 'USAT Commerce', path: '/usat/commerce', description: 'Commerce USAT preparation' },
-    { type: 'content', name: 'USAT General Science', path: '/usat/general-science', description: 'General Science USAT preparation' },
-    
-    // Key topics
-    { type: 'content', name: 'Stipendium Hungaricum', path: '/overview', description: 'Full scholarship program information' },
-    { type: 'content', name: 'Scholarship Requirements', path: '/overview', description: 'Eligibility and requirements' },
-    { type: 'content', name: 'Application Process', path: '/timeline', description: 'Step by step application guide' },
-    { type: 'content', name: 'Motivation Letter', path: '/documents/motivation-letter', description: 'How to write motivation letter' },
-    { type: 'content', name: 'HuBot', path: '/hubot', description: 'AI assistant for Hungary scholarship' },
-    { type: 'content', name: 'Pro Services', path: '/pro', description: 'Professional assistance services' },
-    { type: 'content', name: 'Visa Information', path: '/visa', description: 'Visa requirements and process' },
-    { type: 'content', name: 'Registration Guide', path: '/registration-guide', description: 'Complete registration walkthrough' },
-    { type: 'content', name: 'Universities', path: '/universities', description: 'List of Hungarian universities' },
-    { type: 'content', name: 'Before After', path: '/before-after', description: 'Success stories and transformations' },
-    
-    // Cities - check actual slug format from Cities page
-    { type: 'content', name: 'Budapest', path: '/cities/budapest', description: 'Capital city of Hungary' },
-    { type: 'content', name: 'Debrecen', path: '/cities/debrecen', description: 'Second largest city in Hungary' },
-    { type: 'content', name: 'Szeged', path: '/cities/szeged', description: 'University city in southern Hungary' },
-    { type: 'content', name: 'Pécs', path: '/cities/pecs', description: 'Historic city in southern Hungary' },
-    { type: 'content', name: 'Győr', path: '/cities/gyor', description: 'Industrial city in northwestern Hungary' },
-    { type: 'content', name: 'Miskolc', path: '/cities/miskolc', description: 'University city in northern Hungary' },
-  ];
 
-  // Search functionality
+
+  // Enhanced search functionality using search service
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim() === '') {
@@ -104,15 +78,11 @@ const Header = () => {
       return;
     }
 
-    const filtered = searchData.filter(item =>
-      item.name.toLowerCase().includes(query.toLowerCase()) ||
-      item.description.toLowerCase().includes(query.toLowerCase())
-    ).slice(0, 8); // Limit to 8 results
-
-    setSearchResults(filtered);
+    const results = searchService.search(query, 10);
+    setSearchResults(results);
   };
 
-  const handleSearchResultClick = (item: any) => {
+  const handleSearchResultClick = (item: SearchItem) => {
     setIsSearchOpen(false);
     setSearchQuery('');
     setSearchResults([]);
@@ -201,7 +171,7 @@ const Header = () => {
                   </div>
 
                   {/* Theme Toggle */}
-                  <ThemeToggle />
+                  <AnimatedThemeToggler />
                 </motion.div>
               ) : (
                 /* Normal Mode Layout */
@@ -237,7 +207,7 @@ const Header = () => {
                     </motion.button>
 
                     {/* Theme Toggle */}
-                    <ThemeToggle />
+                    <AnimatedThemeToggler />
 
                     {/* Hamburger Menu */}
                     <motion.button
