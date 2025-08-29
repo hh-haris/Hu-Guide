@@ -30,6 +30,11 @@ export function ThemeProvider({
 }: ThemeProviderProps) {
   // Initialize theme with system preference support
   const [theme, setTheme] = useState<Theme>(() => {
+    // Check if we're in browser environment
+    if (typeof window === 'undefined') {
+      return defaultTheme;
+    }
+    
     const stored = localStorage.getItem(storageKey) as Theme;
     if (stored && (stored === 'dark' || stored === 'light')) {
       return stored;
@@ -49,9 +54,9 @@ export function ThemeProvider({
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+    setTheme: (newTheme: Theme) => {
+      localStorage.setItem(storageKey, newTheme);
+      setTheme(newTheme);
     },
     actualTheme,
   };
