@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, X, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from '../../Header';
 import { Card, CardContent } from '../components/ui/card';
 
 const USATEngineering = () => {

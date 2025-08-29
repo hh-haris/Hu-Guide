@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
+import Header from '../../Header';
 
 const MotivationLetter = () => {
   return (

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggler';
+import Header from '../../Header';
+import { AnimatedThemeToggler } from '@/components/ThemeToggle';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -229,3 +229,4 @@ const ThemeDemo = () => {
 };
 
 export default ThemeDemo;
+
