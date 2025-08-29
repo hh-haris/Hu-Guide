@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: 'light',
   setTheme: () => null,
   actualTheme: 'light',
 };
@@ -24,13 +24,21 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'light',
   storageKey = 'hungaricum-theme',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  );
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(storageKey) as Theme;
+      if (stored) return stored;
+      
+      // Check system preference
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return systemPrefersDark ? 'dark' : defaultTheme;
+    }
+    return defaultTheme;
+  });
 
   const [actualTheme, setActualTheme] = useState<'dark' | 'light'>('light');
 
@@ -38,21 +46,28 @@ export function ThemeProvider({
     const root = window.document.documentElement;
 
     root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    setActualTheme(theme);
 
-    let resolvedTheme: 'dark' | 'light';
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      resolvedTheme = systemTheme;
-    } else {
-      resolvedTheme = theme;
-    }
-
-    root.classList.add(resolvedTheme);
-    setActualTheme(resolvedTheme);
+    // Set color-scheme for better browser integration
+    root.style.colorScheme = theme;
   }, [theme]);
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only auto-switch if user hasn't set a preference
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [storageKey]);
 
   const value = {
     theme,
