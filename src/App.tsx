@@ -24,6 +24,8 @@ import Universities from "./pages/Universities";
 import UniversitySearch from "./pages/UniversitySearch";
 import Seniors from "./pages/Seniors";
 import Official from "./pages/Official";
+import { useEffect } from "react";
+import { SiteSearch } from "./search/site-search";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +59,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      {(() => { SiteSearch.initialize(); return null; })()}
     </TooltipProvider>
   </QueryClientProvider>
 );

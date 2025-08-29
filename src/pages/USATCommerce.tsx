@@ -40,7 +40,7 @@ const USATCommerce = () => {
 
 
 
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}

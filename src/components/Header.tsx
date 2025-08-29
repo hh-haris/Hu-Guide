@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,7 +40,7 @@ const Header = () => {
   return (
     <>
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-gray"
+        className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-brand-gray"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
@@ -58,6 +59,7 @@ const Header = () => {
 
             {/* Right side controls */}
             <div className="flex items-center space-x-2">
+              <ThemeToggle />
               {/* Hamburger Menu */}
               <motion.button
                 onClick={toggleMenu}
