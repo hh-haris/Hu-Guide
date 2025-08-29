@@ -76,7 +76,7 @@ const HuBot = () => {
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray dark:bg-gray-900">
+      <div className="pt-14 bg-muted dark:bg-gray-900">
         <div className="mobile-container py-3">
           <div className="flex items-center text-sm font-primary">
             <Link to="/" className="text-muted-foreground hover:text-brand-orange smooth-transition">

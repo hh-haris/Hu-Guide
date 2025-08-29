@@ -5,12 +5,12 @@ import Header from '../components/Header';
 
 const MotivationLetter = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
 
       {/* Breadcrumb */}
       <motion.div
-        className="pt-14 bg-brand-light-gray"
+        className="pt-14 bg-muted"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}

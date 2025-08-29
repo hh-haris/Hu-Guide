@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: 'light',
   setTheme: () => null,
   actualTheme: 'light',
 };
@@ -24,7 +24,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
+  defaultTheme = 'light',
   storageKey = 'hungaricum-theme',
   ...props
 }: ThemeProviderProps) {
@@ -39,20 +39,17 @@ export function ThemeProvider({
 
     root.classList.remove('light', 'dark');
 
-    let resolvedTheme: 'dark' | 'light';
-
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
-      resolvedTheme = systemTheme;
-    } else {
-      resolvedTheme = theme;
-    }
+    // Simple theme resolution - just use the theme directly
+    const resolvedTheme = theme === 'dark' ? 'dark' : 'light';
 
     root.classList.add(resolvedTheme);
     setActualTheme(resolvedTheme);
+
+    // Add transition class after theme change to ensure smooth transition
+    root.style.colorScheme = resolvedTheme;
   }, [theme]);
+
+
 
   const value = {
     theme,
