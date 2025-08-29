@@ -114,6 +114,12 @@ All colors MUST be HSL.
     background-color: hsl(var(--brand-light-green));
   }
 
+  /* Ensure text inside green boxes/buttons stays dark in both themes */
+  .bg-brand-light-green,
+  .bg-brand-light-green * {
+    color: hsl(0 0% 5%) !important;
+  }
+
   .bg-brand-gray {
     background-color: hsl(var(--brand-gray));
   }
