@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, X, Clock } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { useSearch } from '@/hooks/useSearch';
+import { useNavigate, Link } from 'react-router-dom';
+import { useSearch } from '@/useSearch';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatedThemeToggler } from '@/components/ThemeToggle';
 
 export function EnhancedSearch() {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +78,7 @@ export function EnhancedSearch() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex items-center gap-2">
       <Button
         variant="ghost"
         size="icon"
@@ -87,6 +88,7 @@ export function EnhancedSearch() {
       >
         <Search className="h-4 w-4" />
       </Button>
+      <AnimatedThemeToggler />
 
       <AnimatePresence>
         {isOpen && (
@@ -154,23 +156,10 @@ export function EnhancedSearch() {
                             onClick={() => handleResultClick(result.url, result.title)}
                             className="w-full px-4 py-3 text-left hover:bg-muted transition-colors group"
                           >
-                            <div className="flex items-start gap-3">
-                              <span className="text-lg mt-1">{getTypeIcon(result.type)}</span>
-                              <div className="flex-1 min-w-0">
-                                <div className="font-medium text-sm group-hover:text-primary">
-                                  {highlightText(result.title, searchTerm)}
-                                </div>
-                                <div className="text-xs text-muted-foreground mt-1 line-clamp-2">
-                                  {highlightText(result.content, searchTerm)}
-                                </div>
-                                <div className="flex items-center gap-2 mt-2">
-                                  <span className="text-xs bg-muted px-2 py-1 rounded capitalize">
-                                    {result.type}
-                                  </span>
-                                  <span className="text-xs text-muted-foreground">
-                                    {result.category}
-                                  </span>
-                                </div>
+                            <div className="flex items-center gap-3">
+                              <span className="text-lg">{getTypeIcon(result.type)}</span>
+                              <div className="font-medium text-sm group-hover:text-primary">
+                                {highlightText(result.title, searchTerm)}
                               </div>
                             </div>
                           </motion.button>
@@ -230,5 +219,25 @@ export function EnhancedSearch() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+export default function Header() {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
+      <div className="mobile-container">
+        <div className="flex items-center justify-between h-14">
+          <div>
+            <Link to="/" className="flex items-center">
+              <span className="font-secondary text-brand-orange font-extrabold text-2xl">hu</span>
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <EnhancedSearch />
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }
