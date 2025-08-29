@@ -1,0 +1,32 @@
+:root {
+  /* Light theme variables */
+  --background: 255, 255, 255;
+  --foreground: 15, 23, 42;
+  --muted: 241, 245, 249;
+  --muted-foreground: 100, 116, 139;
+  --border: 226, 232, 240;
+  --input: 226, 232, 240;
+  --primary: 15, 23, 42;
+  --secondary: 226, 232, 240;
+  --accent: 59, 130, 246;
+  --accent-foreground: 255, 255, 255;
+}
+
+[data-theme="dark"] {
+  /* Dark theme variables */
+  --background: 15, 23, 42;
+  --foreground: 255, 255, 255;
+  --muted: 30, 41, 59;
+  --muted-foreground: 148, 163, 184;
+  --border: 51, 65, 85;
+  --input: 51, 65, 85;
+  --primary: 255, 255, 255;
+  --secondary: 51, 65, 85;
+  --accent: 59, 130, 246;
+  --accent-foreground: 255, 255, 255;
+}
+
+/* Smooth theme transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
