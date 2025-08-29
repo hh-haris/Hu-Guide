@@ -222,14 +222,14 @@ const OverviewCarousel = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
-              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-4 border-b border-brand-gray flex justify-between items-center">
-                <h3 className="font-secondary font-bold text-lg text-brand-blue">Details</h3>
+              <div className="p-4 border-b border-brand-gray dark:border-gray-600 flex justify-between items-center">
+                <h3 className="font-secondary font-bold text-lg text-brand-blue dark:text-blue-400">Details</h3>
                 <button
                   onClick={() => setShowDetails(false)}
-                  className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition"
+                  className="p-1 hover:bg-brand-light-gray dark:hover:bg-gray-700 rounded-full smooth-transition"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -249,7 +249,7 @@ const OverviewCarousel = () => {
                     ].map((req, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
+                        className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray dark:hover:bg-gray-700 transition-colors duration-200"
                       >
                         <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0"></span>
                         <span className="font-primary text-sm leading-snug text-muted-foreground">
@@ -280,14 +280,14 @@ const OverviewCarousel = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
-              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-4 border-b border-brand-gray flex justify-between items-center">
-                <h3 className="font-secondary font-bold text-lg text-brand-blue">Insights</h3>
+              <div className="p-4 border-b border-brand-gray dark:border-gray-600 flex justify-between items-center">
+                <h3 className="font-secondary font-bold text-lg text-brand-blue dark:text-blue-400">Insights</h3>
                 <button
                   onClick={() => setShowProsCons(false)}
-                  className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition"
+                  className="p-1 hover:bg-brand-light-gray dark:hover:bg-gray-700 rounded-full smooth-transition"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -296,7 +296,7 @@ const OverviewCarousel = () => {
                 <div className="space-y-6">
                   {/* Pros */}
                   <div>
-                    <h4 className="font-secondary font-semibold text-brand-blue mb-2 text-lg">
+                    <h4 className="font-secondary font-semibold text-brand-blue dark:text-blue-400 mb-2 text-lg">
                       Pros
                     </h4>
                     <ul className="space-y-1.5">
@@ -310,7 +310,7 @@ const OverviewCarousel = () => {
                       ].map((point, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
+                          className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray dark:hover:bg-gray-700 transition-colors duration-200"
                         >
                           <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0" />
                           <span className="font-primary text-sm leading-snug text-muted-foreground">
@@ -323,7 +323,7 @@ const OverviewCarousel = () => {
 
                   {/* Cons */}
                   <div>
-                    <h4 className="font-secondary font-semibold text-brand-blue mb-2 text-lg">
+                    <h4 className="font-secondary font-semibold text-brand-blue dark:text-blue-400 mb-2 text-lg">
                       Cons
                     </h4>
                     <ul className="space-y-1.5">
@@ -336,7 +336,7 @@ const OverviewCarousel = () => {
                       ].map((point, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
+                          className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray dark:hover:bg-gray-700 transition-colors duration-200"
                         >
                           <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0" />
                           <span className="font-primary text-sm leading-snug text-muted-foreground">

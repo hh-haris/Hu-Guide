@@ -24,6 +24,10 @@ import Universities from "./pages/Universities";
 import UniversitySearch from "./pages/UniversitySearch";
 import Seniors from "./pages/Seniors";
 import Official from "./pages/Official";
+import HuBot from "./pages/HuBot";
+import Pro from "./pages/Pro";
+import Visa from "./pages/Visa";
+import BeforeAfter from "./pages/BeforeAfter";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +57,11 @@ const App = () => (
           <Route path="/cities/:citySlug" element={<CityDetail />} />
           <Route path="/seniors" element={<Seniors />} />
           <Route path="/official" element={<Official />} />
+          <Route path="/hubot" element={<HuBot />} />
+          <Route path="/pro" element={<Pro />} />
+          <Route path="/visa" element={<Visa />} />
+          <Route path="/before-after" element={<BeforeAfter />} />
+          <Route path="/registration-guide" element={<RegistrationGuide />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
