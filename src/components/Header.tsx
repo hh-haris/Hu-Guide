@@ -108,17 +108,16 @@ export function EnhancedSearch() {
               className="bg-background border rounded-lg shadow-lg w-full max-w-2xl mx-4 max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Search Input */}
-              <div className="flex items-center px-4 py-3 border-b">
-                <Search className="h-4 w-4 text-muted-foreground mr-3" />
-                <Input
-                  ref={inputRef}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Search for insights, tuition fee, accommodation, USAT schedule, visa..."
-                  className="border-0 focus-visible:ring-0 text-base bg-transparent"
-                />
+             // In your Header component, replace the search section with:
+import { EnhancedSearch } from '@/components/EnhancedSearch';
+import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggler';
+
+// In the header JSX:
+<div className="flex items-center space-x-3">
+  <EnhancedSearch />
+  <AnimatedThemeToggler />
+  {/* Your hamburger menu */}
+</div>
                 <Button
                   variant="ghost"
                   size="icon"
