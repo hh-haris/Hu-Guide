@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
 import { X } from 'lucide-react';
-import Header from '../components/Header';
+import Header from '../../Header';
 import { Card, CardContent } from '../components/ui/card';
 import { Avatar, AvatarFallback } from '../components/ui/avatar';
 

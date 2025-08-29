@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, BadgeCheck, ChevronRight } from 'lucide-react';
 import NumberFlow from '@number-flow/react';
-import Header from '../components/Header';
+import Header from '../../Header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';

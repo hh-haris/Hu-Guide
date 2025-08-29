@@ -1,4 +1,4 @@
-import { AnimatedThemeToggler } from "@/components/magicui/animated-theme-toggler";
+import { AnimatedThemeToggler } from "@/components/ThemeToggle";
 
 function AnimatedThemeTogglerDemo() {
   return (

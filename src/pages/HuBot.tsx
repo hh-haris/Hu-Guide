@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Send, RotateCcw, Bot } from 'lucide-react';
-import Header from '../components/Header';
+import Header from '../../Header';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
