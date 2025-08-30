@@ -336,7 +336,7 @@ const CityDetail = () => {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-lg max-w-sm w-full max-h-[80vh] overflow-y-auto"
+        className="bg-background rounded-lg max-w-sm w-full max-h-[80vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6">
