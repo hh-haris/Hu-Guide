@@ -1,13 +1,8 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselApi,
-} from "@/components/ui/carousel";
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronUp } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselApi } from '@/components/ui/carousel';
 
 interface CurrencyAmount {
   huf: number;
@@ -25,45 +20,41 @@ const OverviewCarousel = () => {
   const [count, setCount] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
   const [showProsCons, setShowProsCons] = useState(false);
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
   useEffect(() => {
     if (!api) return;
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
+    api.on('select', () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
   }, [api]);
 
   const coverageData: CoverageItem[] = [
     {
-      name: "Tuition Fee",
-      description:
-        "Complete exemption from all tuition fees for the entire duration of studies.",
+      name: 'Tuition Fee',
+      description: 'Complete exemption from all tuition fees for the entire duration of studies.',
       amount: { huf: 0, pkr: 0 },
     },
     {
-      name: "Stipend",
-      description:
-        "A monthly stipend of 43,700 HUF (around 36,000 PKR or approximately 100 EUR).",
+      name: 'Stipend',
+      description: 'A monthly stipend of 43,700 HUF (around 36,000 PKR or approximately 100 EUR).',
       amount: { huf: 0, pkr: 0 },
     },
     {
-      name: "Accommodation",
-      description:
-        "Students are provided either a free dormitory placement or a housing contribution of 40,000 HUF per month, but in most cases scholarship holders are accommodated in dormitories.",
+      name: 'Accommodation',
+      description: 'Students are provided either a free dormitory placement or a housing contribution of 40,000 HUF per month, but in most cases scholarship holders are accommodated in dormitories.',
       amount: { huf: 0, pkr: 0 },
     },
     {
-      name: "Medical Insurance",
-      description: "Full medical insurance provided at no cost to the student.",
+      name: 'Medical Insurance',
+      description: 'Full medical insurance provided at no cost to the student.',
       amount: { huf: 0, pkr: 0 },
     },
     {
-      name: "Ticket",
-      description:
-        "You initially pay for your ticket to Hungary yourself, and HEC later reimburses you for this one time travel expense.",
+      name: 'Ticket',
+      description: 'You initially pay for your ticket to Hungary yourself, and HEC later reimburses you for this one time travel expense.',
       amount: { huf: 100000, pkr: 87000 },
     },
   ];
@@ -71,27 +62,27 @@ const OverviewCarousel = () => {
   const slides = [
     {
       description:
-        "The Stipendium Hungaricum is a prestigious, fully funded opportunity that allows Pakistani students including bachelors, to study in Hungary in the heart of Europe.",
-      image: "/O1.jpg",
+        'The Stipendium Hungaricum is a prestigious, fully funded opportunity that allows Pakistani students including bachelors, to study in Hungary in the heart of Europe.',
+      image: 'O 1.jpg',
       hasDetails: false,
       hasProsCons: true,
-      hasCoverage: false,
     },
     {
       description:
-        "Pakistani citizens with no dual nationality, who are above 18 years of age, have completed FSc or an equivalent qualification, and possess valid USAT scores are eligible to apply.",
-      image: "/O3.jpg",
+        'Pakistani citizens with no dual nationality, who are above 18 years of age, have completed FSc or an equivalent qualification, and possess valid USAT scores are eligible to apply.',
+      image: 'O 3.jpg',
       hasDetails: true,
-      hasProsCons: false,
-      hasCoverage: false,
     },
     {
-      image: "/O2.jpg",
+      image: 'O 2.jpg',
       hasDetails: false,
-      hasProsCons: false,
       hasCoverage: true,
     },
   ];
+
+  const toggleFAQ = (index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
 
   return (
     <div className="relative">
@@ -121,16 +112,14 @@ const OverviewCarousel = () => {
                       </motion.div>
 
                       <div className="text-center space-y-4 mx-[13px] my-[19px] px-px">
-                        {slide.description && (
-                          <motion.p
-                            className="font-primary text-muted-foreground text-sm leading-relaxed"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
-                          >
-                            {slide.description}
-                          </motion.p>
-                        )}
+                        <motion.p
+                          className="font-primary text-muted-foreground text-sm leading-relaxed"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 }}
+                        >
+                          {slide.description}
+                        </motion.p>
 
                         {/* Coverage Details */}
                         {slide.hasCoverage && (
@@ -150,10 +139,7 @@ const OverviewCarousel = () => {
                                   duration: 0.6,
                                   ease: [0.25, 0.46, 0.45, 0.94],
                                 }}
-                                whileTap={{
-                                  scale: 0.98,
-                                  transition: { duration: 0.1 },
-                                }}
+                                whileTap={{ scale: 0.98, transition: { duration: 0.1 } }}
                                 className="my-[5px] py-0 px-px mx-[10px]"
                               >
                                 <div className="text-left">
@@ -166,6 +152,7 @@ const OverviewCarousel = () => {
                                 </div>
                               </motion.div>
                             ))}
+                            {/* FAQs button removed */}
                           </motion.div>
                         )}
 
@@ -203,7 +190,7 @@ const OverviewCarousel = () => {
       {/* Slide Indicators */}
       <div
         className={`flex justify-center space-x-2 transition-all duration-300 ${
-          current === 1 || current === 2 ? "mt-[-135px] mb-[0px]" : "mt-6 mb-1"
+          current === 1 || current === 2 ? 'mt-[-135px] mb-[0px]' : 'mt-6 mb-1'
         }`}
       >
         {Array.from({ length: count }).map((_, index) => (
@@ -211,7 +198,7 @@ const OverviewCarousel = () => {
             key={index}
             onClick={() => api?.scrollTo(index)}
             className={`w-2 h-2 rounded-full smooth-transition ${
-              index === current - 1 ? "bg-brand-blue" : "bg-brand-gray"
+              index === current - 1 ? 'bg-brand-blue' : 'bg-brand-gray'
             }`}
             whileTap={{ scale: 0.8 }}
             animate={{ scale: index === current - 1 ? 1.2 : 1 }}
@@ -234,14 +221,12 @@ const OverviewCarousel = () => {
               initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
+              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
-                <h3 className="font-secondary font-bold text-lg text-brand-blue">
-                  Details
-                </h3>
+                <h3 className="font-secondary font-bold text-lg text-brand-blue">Details</h3>
                 <button
                   onClick={() => setShowDetails(false)}
                   className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition"
@@ -250,28 +235,30 @@ const OverviewCarousel = () => {
                 </button>
               </div>
               <div className="p-4 overflow-y-auto max-h-96">
-                <ul className="space-y-1.5">
-                  {[
-                    "Must be a Pakistani or AJ&K citizen without any other nationality.",
-                    "Must be 18 years old by 31 August 2026.",
-                    "Must have completed F.Sc/F.A or an equivalent qualification.",
-                    "Students awaiting their final year results are also eligible to apply.",
-                    "Must have valid USAT marks (a score of 75 or above is recommended).",
-                    "Must have all required documents complete.",
-                    "A well prepared Letter of Motivation is required.",
-                    "Must submit a medical certificate of satisfactory health.",
-                  ].map((req, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
-                    >
-                      <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0"></span>
-                      <span className="font-primary text-sm leading-snug text-muted-foreground">
-                        {req}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="space-y-4">
+                  <ul className="space-y-1.5">
+                    {[
+                      'Must be a Pakistani or AJ&K citizen without any other nationality.',
+                      'Must be 18 years old by 31 August 2026. Those born after 31 August 2008 are not eligible.',
+                      'Must have completed F.Sc/F.A or an equivalent qualification.',
+                      'Students awaiting their final year results are also eligible to apply.',
+                      'Must have valid USAT marks (a score of 75 or above is recommended).',
+                      'Must have all required documents complete.',
+                      'A well prepared Letter of Motivation is required.',
+                      'Must submit a medical certificate of satisfactory health.',
+                    ].map((req, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
+                      >
+                        <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0"></span>
+                        <span className="font-primary text-sm leading-snug text-muted-foreground">
+                          {req}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -292,14 +279,12 @@ const OverviewCarousel = () => {
               initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
+              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
-                <h3 className="font-secondary font-bold text-lg text-brand-blue">
-                  Insights
-                </h3>
+                <h3 className="font-secondary font-bold text-lg text-brand-blue">Insights</h3>
                 <button
                   onClick={() => setShowProsCons(false)}
                   className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition"
@@ -307,58 +292,60 @@ const OverviewCarousel = () => {
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <div className="p-4 overflow-y-auto max-h-96 space-y-6">
-                {/* Pros */}
-                <div>
-                  <h4 className="font-secondary font-semibold text-brand-blue mb-2 text-lg">
-                    Pros
-                  </h4>
-                  <ul className="space-y-1.5">
-                    {[
-                      "Fully funded scholarships for undergraduates are extremely rare.",
-                      "The scholarship provides a Schengen visa, enabling travel across Europe.",
-                      "Living abroad builds independence, confidence, and lifelong skills.",
-                      "You study in a diverse, multicultural environment with global peers.",
-                      "The Pakistani student community in Hungary is supportive and close knit.",
-                      "IELTS is often not required, making it easier to apply.",
-                    ].map((point, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
-                      >
-                        <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0" />
-                        <span className="font-primary text-sm leading-snug text-muted-foreground">
-                          {point}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="p-4 overflow-y-auto max-h-96">
+                <div className="space-y-6">
+                  {/* Pros */}
+                  <div>
+                    <h4 className="font-secondary font-semibold text-brand-blue mb-2 text-lg">
+                      Pros
+                    </h4>
+                    <ul className="space-y-1.5">
+                      {[
+                        'Fully funded scholarships for undergraduates are extremely rare, and SHS stands out as one of the finest opportunities available.',
+                        'The scholarship provides a Schengen visa, enabling travel across Europe.',
+                        'Living abroad builds independence, confidence, and lifelong skills.',
+                        'You study in a diverse, multicultural environment with global peers.',
+                        'The Pakistani student community in Hungary is supportive and close knit.',
+                        'IELTS is often not required, making it easier to apply.',
+                      ].map((point, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
+                        >
+                          <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0" />
+                          <span className="font-primary text-sm leading-snug text-muted-foreground">
+                            {point}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                {/* Cons */}
-                <div>
-                  <h4 className="font-secondary font-semibold text-brand-blue mb-2 text-lg">
-                    Cons
-                  </h4>
-                  <ul className="space-y-1.5">
-                    {[
-                      "The monthly stipend often isn't enough to cover all expenses.",
-                      "You must pass the Hungarian exam and earn at least 60 credits by your second semester.",
-                      "Language barriers exist, as not everyone speaks English.",
-                      "Student job opportunities are limited, especially outside Budapest.",
-                      "Dormitory conditions vary widely and may not always be ideal.",
-                    ].map((point, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
-                      >
-                        <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0" />
-                        <span className="font-primary text-sm leading-snug text-muted-foreground">
-                          {point}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Cons */}
+                  <div>
+                    <h4 className="font-secondary font-semibold text-brand-blue mb-2 text-lg">
+                      Cons
+                    </h4>
+                    <ul className="space-y-1.5">
+                      {[
+                        'The monthly stipend often isn’t enough to cover all expenses, so you’ll need extra personal funds.',
+                        'To keep the scholarship, you must pass the Hungarian exam and earn at least 60 credits by your second semester.',
+                        'Language barriers exist, as not everyone speaks English.',
+                        'Student job opportunities are limited. In cities like Budapest it is difficult and in smaller cities the situation is even worse and very limited.',
+                        'Dormitory conditions vary widely and may not always be ideal.',
+                      ].map((point, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start space-x-2 p-1 rounded-md hover:bg-brand-light-gray transition-colors duration-200"
+                        >
+                          <span className="mt-1 h-2 w-2 rounded-full bg-brand-orange flex-shrink-0" />
+                          <span className="font-primary text-sm leading-snug text-muted-foreground">
+                            {point}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </motion.div>

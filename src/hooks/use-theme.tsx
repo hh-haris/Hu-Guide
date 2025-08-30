@@ -28,9 +28,17 @@ export function ThemeProvider({
   storageKey = 'hungaricum-theme',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
-  );
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(storageKey) as Theme;
+      if (stored) return stored;
+      
+      // Check system preference
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return systemPrefersDark ? 'dark' : defaultTheme;
+    }
+    return defaultTheme;
+  });
 
   const [actualTheme, setActualTheme] = useState<'dark' | 'light'>('light');
 
@@ -38,18 +46,28 @@ export function ThemeProvider({
     const root = window.document.documentElement;
 
     root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    setActualTheme(theme);
 
-    // Simple theme resolution - just use the theme directly
-    const resolvedTheme = theme === 'dark' ? 'dark' : 'light';
-
-    root.classList.add(resolvedTheme);
-    setActualTheme(resolvedTheme);
-
-    // Add transition class after theme change to ensure smooth transition
-    root.style.colorScheme = resolvedTheme;
+    // Set color-scheme for better browser integration
+    root.style.colorScheme = theme;
   }, [theme]);
 
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      // Only auto-switch if user hasn't set a preference
+      const stored = localStorage.getItem(storageKey);
+      if (!stored) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    };
 
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [storageKey]);
 
   const value = {
     theme,
