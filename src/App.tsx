@@ -30,8 +30,9 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-    <ThemeProvider defaultTheme="light" storageKey="hungaricum-theme">
-      <Sonner />
+      <ThemeProvider defaultTheme="light" storageKey="hungaricum-theme">
+        <BrowserRouter>
+          <Sonner />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/overview" element={<Overview />} />
@@ -56,6 +57,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+      </ThemeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
