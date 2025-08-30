@@ -37,11 +37,11 @@ const USATComputerScience = () => {
     link: "https://drive.google.com/drive/folders/1DzYs4QSVONwQ7XuLbCJywths93DVJ2A"
 
   }];
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray">
+      <div className="pt-14 bg-muted">
         <div className="mobile-container py-3">
           <div className="flex items-center text-sm font-primary">
             <Link to="/" className="text-muted-foreground hover:text-brand-orange smooth-transition">

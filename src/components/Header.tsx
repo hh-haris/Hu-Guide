@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggler';
 import { useSearch } from '@/hooks/useSearch';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
