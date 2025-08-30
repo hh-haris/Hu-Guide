@@ -227,7 +227,7 @@ const CityDetail = () => {
   const closeModal = () => setActiveModal(null);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-14">
@@ -336,7 +336,7 @@ const CityDetail = () => {
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-lg max-w-sm w-full max-h-[80vh] overflow-y-auto"
+                      className="bg-background rounded-lg max-w-sm w-full max-h-[80vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-6">
@@ -347,7 +347,7 @@ const CityDetail = () => {
             </h2>
             <button
               onClick={closeModal}
-              className="p-1 hover:bg-brand-light-gray rounded transition-colors"
+                              className="p-1 hover:bg-muted rounded transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
@@ -363,7 +363,7 @@ const CityDetail = () => {
                   {university.name}
                 </span>
                 {index < cityData.universities.length - 1 && (
-                  <div className="h-px w-10 bg-brand-light-gray/60 my-1 rounded-full"></div>
+                  <div className="h-px w-10 bg-muted/60 my-1 rounded-full"></div>
                 )}
               </div>
             ))}
