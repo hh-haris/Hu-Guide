@@ -39,12 +39,12 @@ const OverviewCarousel = () => {
     },
     {
       name: 'Stipend',
-      description: 'A monthly stipend of 43,700 HUF (around 36,000 PKR or approximately 100 EUR).',
+      description: 'A monthly stipend of 43,700 HUF (around 36,000 PKR or approximately 100 EUR).',
       amount: { huf: 0, pkr: 0 },
     },
     {
       name: 'Accommodation',
-      description: 'Students are provided either a free dormitory placement or a housing contribution of 40,000 HUF per month, but in most cases scholarship holders are accommodated in dormitories.',
+      description: 'Students are provided either a free dormitory placement or a housing contribution of 40,000 HUF per month, but in most cases scholarship holders are accommodated in dormitories.',
       amount: { huf: 0, pkr: 0 },
     },
     {
@@ -222,7 +222,7 @@ const OverviewCarousel = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
-              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
@@ -280,7 +280,7 @@ const OverviewCarousel = () => {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300, duration: 0.5 }}
-              className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+              className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-4 border-b border-brand-gray flex justify-between items-center">
@@ -328,7 +328,7 @@ const OverviewCarousel = () => {
                     </h4>
                     <ul className="space-y-1.5">
                       {[
-                        'The monthly stipend often isn’t enough to cover all expenses, so you’ll need extra personal funds.',
+                        'The monthly stipend often isn't enough to cover all expenses, so you'll need extra personal funds.',
                         'To keep the scholarship, you must pass the Hungarian exam and earn at least 60 credits by your second semester.',
                         'Language barriers exist, as not everyone speaks English.',
                         'Student job opportunities are limited. In cities like Budapest it is difficult and in smaller cities the situation is even worse and very limited.',
