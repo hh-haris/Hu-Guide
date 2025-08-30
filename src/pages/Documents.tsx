@@ -42,10 +42,11 @@ const Documents = () => {
     setExpandedFAQ(expandedFAQ === index ? null : index);
   };
   return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
-      <motion.div className="pt-14 bg-brand-light-gray" initial={{
+      <motion.div className="pt-14 bg-muted" initial={{
       opacity: 0
     }} animate={{
       opacity: 1

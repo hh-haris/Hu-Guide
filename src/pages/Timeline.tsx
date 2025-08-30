@@ -108,10 +108,11 @@ const TimelinePage = () => {
     description: "After visa approval, candidates arrive in Hungary in September. The above countdown isn’t just a timer it’s your victory clock ticking down to your very first class in Hungary, usually on 1 September at 9:00 AM. Congratulations, you’ve made it! 🎉"
   }];
   return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray">
+              <div className="pt-14 bg-muted">
         <div className="mobile-container py-3">
           <div className="flex items-center text-sm font-primary">
             <Link to="/" className="text-muted-foreground hover:text-brand-orange smooth-transition">
