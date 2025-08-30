@@ -37,11 +37,11 @@ const USATComputerScience = () => {
     link: "https://drive.google.com/drive/folders/1DzYs4QSVONwQ7XuLbCJywths93DVJ2A"
 
   }];
-  return <div className="min-h-screen bg-white">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray">
+      <div className="pt-14 bg-muted">
         <div className="mobile-container py-3">
           <div className="flex items-center text-sm font-primary">
             <Link to="/" className="text-muted-foreground hover:text-brand-orange smooth-transition">
@@ -310,17 +310,17 @@ const USATComputerScience = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
-              <div className="p-4 border-b border-brand-gray flex justify-between items-center">
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+              <div className="p-4 border-b border-border flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Past Papers</h3>
-                <button onClick={() => setShowPastPapers(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
+                <button onClick={() => setShowPastPapers(false)} className="p-1 hover:bg-muted rounded-full smooth-transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>
               
               <div className="p-4 overflow-y-auto max-h-96">
                 <div className="space-y-4">
-                  {pastPapersData.map((paper, index) => <div key={index} className="flex justify-between items-center py-2 border-b border-brand-gray last:border-b-0">
+                  {pastPapersData.map((paper, index) => <div key={index} className="flex justify-between items-center py-2 border-b border-border last:border-b-0">
                       <span className="font-primary text-brand-orange font-medium">
                         {paper.subject}
                       </span>
@@ -358,10 +358,10 @@ const USATComputerScience = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
-              <div className="p-4 border-b border-brand-gray flex justify-between items-center">
+        }} className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+              <div className="p-4 border-b border-border flex justify-between items-center">
                 <h3 className="font-secondary font-bold text-lg text-brand-blue">Study Resources</h3>
-                <button onClick={() => setShowStudyResources(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
+                <button onClick={() => setShowStudyResources(false)} className="p-1 hover:bg-muted rounded-full smooth-transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -407,10 +407,10 @@ const USATComputerScience = () => {
         }} transition={{
           type: "spring",
           damping: 20
-        }} className="bg-white rounded-2xl w-full max-w-md max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
-              <div className="p-4 border-b border-brand-gray flex justify-between items-center">
-                <h3 className="font-secondary font-bold text-lg text-brand-blue">Computer Science Studies in Hungary</h3>
-                <button onClick={() => setShowProsCons(false)} className="p-1 hover:bg-brand-light-gray rounded-full smooth-transition">
+        }} className="bg-background rounded-2xl w-full max-w-md max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+                              <div className="p-4 border-b border-border flex justify-between items-center">
+                  <h3 className="font-secondary font-bold text-lg text-brand-blue">Computer Science Studies in Hungary</h3>
+                  <button onClick={() => setShowProsCons(false)} className="p-1 hover:bg-muted rounded-full smooth-transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>

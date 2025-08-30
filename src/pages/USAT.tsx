@@ -110,11 +110,11 @@ const USAT = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Breadcrumb */}
-      <div className="pt-14 bg-brand-light-gray">
+      <div className="pt-14 bg-muted">
         <div className="mobile-container py-3">
           <div className="flex items-center text-sm font-primary">
             <Link to="/" className="text-muted-foreground hover:text-brand-orange smooth-transition">
@@ -175,7 +175,7 @@ const USAT = () => {
   <div className="overflow-x-auto rounded-lg">
     <Table className="min-w-full text-sm">
       <TableHeader>
-        <TableRow className="bg-brand-light-green">
+        <TableRow className="bg-muted">
           <TableHead className="font-secondary font-semibold text-foreground px-3 py-2 whitespace-nowrap">
             Session
           </TableHead>
@@ -198,7 +198,7 @@ const USAT = () => {
         {scheduleData.map((row, index) => (
           <TableRow
             key={index}
-            className="hover:bg-brand-light-gray/50 transition-colors duration-200"
+            className="hover:bg-muted/50 transition-colors duration-200"
           >
             <TableCell className="px-3 py-3 font-medium text-foreground whitespace-nowrap">
               {row.session}
@@ -287,7 +287,7 @@ const USAT = () => {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         transition={{ type: "spring", damping: 20 }}
-        className="bg-white rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
+        className="bg-background rounded-2xl w-full max-w-sm max-h-[80vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Heading */}
@@ -297,7 +297,7 @@ const USAT = () => {
           </h3>
           <button
             onClick={() => setShowModal(false)}
-            className="p-1 hover:bg-brand-light-gray rounded-full transition-colors"
+                              className="p-1 hover:bg-muted rounded-full transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -316,7 +316,7 @@ const USAT = () => {
               <div className="overflow-x-auto">
                 <Table className="w-full text-sm border-collapse">
                   <TableHeader>
-                    <TableRow className="bg-brand-light-green">
+                    <TableRow className="bg-muted">
                       <TableHead className="text-left px-3 py-2 font-secondary font-semibold text-foreground rounded-tl-lg">
                         Component
                       </TableHead>
